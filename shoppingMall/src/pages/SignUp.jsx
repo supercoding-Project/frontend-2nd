@@ -13,8 +13,8 @@ const SignUp = () => {
             <input type="text" placeholder="이름을 입력해주세요." />
           </div>
           <div className={styles["input-container"]}>
-            <label>아이디</label>
-            <input type="text" placeholder="아이디를 입력해주세요." />
+            <label>이메일</label>
+            <input type="email" placeholder="아이디를 입력해주세요." />
             <button type="button" className={styles["duplicate-check-button"]}>
               중복확인
             </button>
