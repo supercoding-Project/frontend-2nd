@@ -1,12 +1,19 @@
 import React from "react";
 import style from "./CartList.module.css";
 
-const CartList = () => {
+const CartList = ({ isOrderPage }) => {
+  console.log("isOrderPage:", isOrderPage);
   return (
     <div className={style.cart__list}>
       <ul>
-        <li className={`${style.cart__item} ${style.product}`}>
-          <div className={style.cart__itemDetails}>
+        <li className={style.cart__item}>
+          <div
+            className={`${style.cart__itemDetails} ${
+              isOrderPage
+                ? style.orderModeItemDetails
+                : style.defaultModeItemDetails
+            }`}
+          >
             <div className={style.product__image}>
               <img src="#" alt="상품 이미지" />
             </div>
@@ -23,7 +30,11 @@ const CartList = () => {
               </div>
             </div>
           </div>
-          <div className={style.cart__control}>
+          <div
+            className={`${style.cart__control} ${
+              isOrderPage ? style.orderModeControl : style.defaultModeControl
+            }`}
+          >
             <div className={style.cart__quantity}>
               <button
                 className={`
@@ -44,8 +55,18 @@ const CartList = () => {
               </button>
             </div>
           </div>
-          <div className={style.cart__price}>15,000</div>
-          <div className={style.cart__cancel}>
+          <div
+            className={`${style.cart__price} ${
+              isOrderPage ? style.orderModePrice : style.defaultModePrice
+            }`}
+          >
+            15,000
+          </div>
+          <div
+            className={`${style.cart__cancel} ${
+              isOrderPage ? style.orderModeCancel : style.defaultModeCancel
+            }`}
+          >
             <button>X</button>
           </div>
         </li>

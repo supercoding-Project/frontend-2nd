@@ -9,10 +9,7 @@
       .cart__itemDetails {
         display: flex;
         gap: 1rem;
-
-        width: 70%;
         text-align: left;
-
         .product__image {
           border: 1px solid #ddd;
           img {
@@ -36,6 +33,8 @@
             }
           }
           .product__price {
+            font-size: 0.9rem;
+
             .product__priceValue {
             }
             .product__priceUnit {
@@ -44,7 +43,6 @@
         }
       }
       .cart__control {
-        width: 10%;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -74,12 +72,10 @@
         }
       }
       .cart__price {
-        width: 10%;
         font-weight: bold;
         color: var(--color-main);
       }
       .cart__cancel {
-        width: 10%;
         button {
           width: 25px;
           height: 25px;
@@ -96,4 +92,32 @@
       }
     }
   }
+}
+
+.defaultModeItemDetails {
+  width: 70%;
+}
+.orderModeItemDetails {
+  width: 65%;
+}
+
+.defaultModeControl {
+  width: 10%;
+}
+.orderModeControl {
+  width: 15%;
+}
+
+.defaultModePrice {
+  width: 10%;
+}
+.orderModePrice {
+  width: 15%;
+}
+
+.defaultModeCancel {
+  width: 10%;
+}
+.orderModeCancel {
+  width: 5%;
 }

@@ -100,7 +100,7 @@ const Order = () => {
         </div>
       </div>
       <div className={style.orderCart}>
-        <CartList />
+        <CartList isOrderPage={true} />
         <CartTotal />
       </div>
     </div>

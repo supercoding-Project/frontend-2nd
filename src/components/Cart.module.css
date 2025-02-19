@@ -5,21 +5,6 @@ body {
   background-color: #fff;
 }
 
-ul,
-li,
-a,
-button {
-  padding: 0;
-  margin: 0;
-  text-decoration: none;
-  color: inherit;
-}
-button {
-  background-color: inherit;
-  border: 1px solid transparent;
-  cursor: pointer;
-}
-
 .cart {
   padding: 2rem;
   h1.cart__title {
@@ -52,8 +37,8 @@ button {
     .cart__actions {
       display: flex;
       align-items: center;
-      justify-content: center;
-      margin: 1rem;
+      justify-content: end;
+      margin: 3rem 1rem 1rem;
       .cart__orderButton {
         background-color: var(--color-main);
         color: #fff;

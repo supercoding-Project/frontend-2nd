@@ -1,12 +1,12 @@
 import { useState } from "react";
-import Cart from "./components/Cart";
 import Order from "./components/Order";
+import MyPage from "./components/MyPage";
 
 function App() {
   return (
     <>
+      <MyPage />
       <Order></Order>
-      {/* <Cart /> */}
     </>
   );
 }
