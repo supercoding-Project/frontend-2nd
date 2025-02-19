@@ -1,0 +1,99 @@
+.cart__list {
+  ul {
+    li.cart__item {
+      display: flex;
+      align-items: center;
+      /* gap: 1rem; */
+      padding: 1rem;
+      border-bottom: 1px solid #ddd;
+      .cart__itemDetails {
+        display: flex;
+        gap: 1rem;
+
+        width: 70%;
+        text-align: left;
+
+        .product__image {
+          border: 1px solid #ddd;
+          img {
+          }
+        }
+        .product__details {
+          .product__name {
+            font-weight: bold;
+          }
+          .product__info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #999;
+            font-size: 0.9rem;
+            .product__author {
+            }
+            .product__publisher {
+            }
+            .product__date {
+            }
+          }
+          .product__price {
+            .product__priceValue {
+            }
+            .product__priceUnit {
+            }
+          }
+        }
+      }
+      .cart__control {
+        width: 10%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .cart__quantity {
+          border: 1px solid #ddd;
+          display: flex;
+          align-items: center;
+          .cart__count {
+            padding: 0.22rem 0.5rem;
+          }
+          .cart__quantity-button {
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            color: #999;
+            &:hover {
+              background-color: var(--color-main);
+              color: #fff;
+            }
+            &.cart__quantity-button--decrease {
+              font-size: 1.2rem;
+              line-height: 10px;
+            }
+            &.cart__quantity-button--increase {
+            }
+          }
+        }
+      }
+      .cart__price {
+        width: 10%;
+        font-weight: bold;
+        color: var(--color-main);
+      }
+      .cart__cancel {
+        width: 10%;
+        button {
+          width: 25px;
+          height: 25px;
+          border-radius: 5px;
+          border: 1px solid #ddd;
+          font-size: 0.7rem;
+          font-weight: bold;
+          color: #555;
+          &:hover {
+            border-color: var(--color-main);
+            color: var(--color-main);
+          }
+        }
+      }
+    }
+  }
+}

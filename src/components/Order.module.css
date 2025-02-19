@@ -1,0 +1,112 @@
+body {
+  --color-main: #237af6;
+  padding: 0;
+  margin: 0;
+  background-color: #fff;
+}
+.order {
+  display: flex;
+  justify-content: space-between;
+  .orderContainer {
+    width: 40%;
+    padding: 2rem;
+
+    .orderUser {
+      h3 {
+        margin: 0 0 1rem 0;
+      }
+      input {
+        font-size: 1rem;
+        padding: 0.3rem;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+      label {
+        margin-bottom: 0.2rem;
+      }
+      .orderUserRow {
+        display: flex;
+        /* border: 1px solid #000; */
+        padding: 0.5rem 0;
+        gap: 1rem;
+        & > div {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .orderUserName,
+        .orderUserAddressDetail,
+        .orderUserEmail {
+          width: 100%;
+        }
+        .orderUserPostalCode,
+        .orderUserAddress {
+          width: 50%;
+        }
+      }
+      .orderUserEmailAgree {
+      }
+    }
+    .orderPayment {
+      h3 {
+        margin: 2rem 0 1rem 0;
+      }
+      .orderPaymentRow {
+        padding: 0.5rem 0;
+        display: flex;
+        gap: 1rem;
+        .inputs {
+          display: flex;
+          border: 1px solid #ddd;
+          padding: 0.3rem;
+          border-radius: 5px;
+          input {
+            border: 0;
+            text-align: center;
+            font-size: 1rem;
+          }
+          .orderPaymentDash {
+            color: #ddd;
+          }
+        }
+        .orderPaymentCardNumber {
+          input {
+            width: 30%;
+          }
+        }
+        .orderPaymentExpiration {
+          input {
+            width: 50%;
+          }
+        }
+      }
+    }
+    .orderAgree {
+      margin: 2rem 0;
+      font-weight: 900;
+    }
+    .orderButton {
+      display: flex;
+      justify-content: end;
+      button {
+        background-color: var(--color-main);
+        color: #fff;
+        font-weight: bold;
+        padding: 0.7rem 2rem;
+        font-size: 1.1rem;
+        border-radius: 100px;
+        border: 2px solid var(--color-main);
+        &:hover {
+          background-color: #fff;
+          color: var(--color-main);
+        }
+      }
+    }
+  }
+  .orderCart {
+    padding: 2rem;
+
+    width: 60%;
+    background-color: #f5f5f5;
+  }
+}
