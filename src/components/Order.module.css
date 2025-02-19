@@ -7,6 +7,8 @@ body {
 .order {
   display: flex;
   justify-content: space-between;
+  max-width: 1800px;
+  margin: auto;
   .orderContainer {
     width: 40%;
     padding: 2rem;

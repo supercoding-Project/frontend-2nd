@@ -23,6 +23,8 @@ button {
 
 .mypage {
   padding: 2rem;
+  max-width: 1800px;
+  margin: auto;
   .mypageContainer {
     display: flex;
     align-items: start;

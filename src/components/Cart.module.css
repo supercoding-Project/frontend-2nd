@@ -6,7 +6,8 @@ body {
 }
 
 .cart {
-  padding: 2rem;
+  padding: 0 2rem 2rem;
+
   h1.cart__title {
   }
   .cart__container {
