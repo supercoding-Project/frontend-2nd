@@ -11,8 +11,12 @@ const Header = () => {
     <header className={styles.Header}>
       <div>
         <div className={styles.section}>
-          <Link to="/signUp">회원가입</Link>
-          <Link to="/logIn">로그인</Link>
+          <Link to="/signUp" className={styles.LinkSignUp}>
+            회원가입
+          </Link>
+          <Link to="/logIn" className={styles.LinkLogIn}>
+            로그인
+          </Link>
         </div>
         <div className={styles.container}>
           <Link to="/">
@@ -29,21 +33,29 @@ const Header = () => {
           ></input>
           <div className={styles.mypage}>
             <Link to="/mypage/like">
-              <VscHeart size="30" title="찜목록" />
+              <VscHeart size="30" title="찜목록" color="lightGray" />
             </Link>
             <Link to="/cart">
-              <BsCart2 size="30" title="장바구니" />
+              <BsCart2 size="30" title="장바구니" color="lightGray" />
             </Link>
             <Link to="/mypage">
-              <BsFillPersonFill size="30" title="마이페이지" color="#013989" />
+              <BsFillPersonFill size="30" title="마이페이지" color="#237af6" />
             </Link>
           </div>
         </div>
         <nav className={styles.navbar}>
-          <Link to="/category">분야찾기</Link>
-          <Link to="/category/price">가격대별 코너</Link>
-          <Link to="/category/event">이벤트</Link>
-          <Link to="/category/myBookStore">나의 서점</Link>
+          <Link to="/category" className={styles.LinkLogIn}>
+            전체 도서
+          </Link>
+          <Link to="/category/price" className={styles.LinkLogIn}>
+            상태태별 코너
+          </Link>
+          <Link to="/category/event" className={styles.LinkLogIn}>
+            이벤트
+          </Link>
+          <Link to="/category/myBookStore" className={styles.LinkLogIn}>
+            나의 서점
+          </Link>
         </nav>
       </div>
     </header>

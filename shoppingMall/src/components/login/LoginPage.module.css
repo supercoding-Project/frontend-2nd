@@ -34,6 +34,16 @@ h2 {
   font-size: 16px;
 }
 
+.inputError {
+  width: 95%;
+  padding: 12px;
+  margin: 10px 0;
+  background-color: #fbe8d2;
+  border: 1px solid red;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
 /* 로그인 버튼 */
 .loginButton {
   width: 100%;
@@ -63,7 +73,7 @@ h2 {
 .eye {
   position: absolute;
   right: 10px;
-  top: 30%;
+  top: 35px;
   transform: translateY(-50%);
   width: 24px;
   height: 24px;
@@ -89,7 +99,7 @@ h2 {
 
 /* 소셜 로그인 */
 .socialLogin {
-  margin-top: 20px;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -124,4 +134,9 @@ h2 {
 
 .kakao:hover {
   background-color: #fdd835;
+}
+.error {
+  color: red;
+  font-size: 12px;
+  margin-right: 45%;
 }

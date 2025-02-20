@@ -16,6 +16,15 @@
   gap: 10px;
 }
 
+.LinkSignUp {
+  color: #237af6;
+}
+
+.LinkLogIn {
+  color: gray;
+  opacity: 10;
+}
+
 .container {
   height: 40px;
   max-width: 1200px;
