@@ -1,0 +1,19 @@
+.scrollTop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #007bff;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.scrollTop.show {
+  opacity: 1;
+}
+
+.scrollTop:hover {
+  color: #0056b3;
+}
