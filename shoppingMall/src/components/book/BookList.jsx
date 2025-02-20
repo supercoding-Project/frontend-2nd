@@ -10,8 +10,8 @@ const BookList = ({ title, books, bgColor }) => {
       <h2>{title}</h2>
       <ul className={styles["book-container"]}>
         {books.map((item) => (
-          <Link to={`/detail/${item.id}`}>
-            <li key={item.id} className={styles["book"]}>
+          <Link to={`/detail/${item.id}`} key={item.id}>
+            <li className={styles["book"]}>
               <span className={styles["badge"]} style={{ background: `${bgColor[item.status]}` }}>
                 {item.status}
               </span>
