@@ -2,6 +2,8 @@ import { React, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { RiGoogleFill, RiKakaoTalkFill } from "react-icons/ri";
 import ScrollTopButton from "../common/ScrollTopButton";
+import { AiFillEye } from "react-icons/ai";
+import { AiFillEyeInvisible } from "react-icons/ai";
 import EyeOpen from "../../assets/Icons/eye.svg";
 import styles from "./LoginPage.module.css";
 
@@ -15,6 +17,10 @@ const LoginPage = () => {
   const [enteredEmailIsTouched, setEnteredEmailIsTouched] = useState(false);
   const [enteredPasswordIsTouched, setEnteredPasswordIsTouched] =
     useState(false);
+  const [pw, setPw] = useState({
+    type: "password",
+    value: false,
+  });
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -59,6 +65,15 @@ const LoginPage = () => {
     setEnteredPasswordIsValid(password.trim().length > 0);
   };
 
+  const handlePwCheck = (e) => {
+    setPw(() => {
+      if (!pw.value) {
+        return { type: "text", value: true };
+      }
+      return { type: "password", value: false };
+    });
+  };
+
   //에러 메세지 보여주는 경우, true -> show msg
   const emailInputIsInvalid = !enteredEmailIsValid && enteredEmailIsTouched;
   const passwordInputIsInvalid =
@@ -88,14 +103,21 @@ const LoginPage = () => {
 
           <div className={styles.passwordWrapper}>
             <input
-              type="password"
+              type={pw.type}
               placeholder="비밀번호를 입력하세요"
               className={pwInputClasses}
               value={enteredPassword}
               ref={passwordInputRef}
               onChange={handlePasswordInput}
             />
-            <img src={EyeOpen} className={styles.eye} />
+            {!pw.value ? (
+              <AiFillEye onClick={handlePwCheck} className={styles.eye} />
+            ) : (
+              <AiFillEyeInvisible
+                onClick={handlePwCheck}
+                className={styles.eye}
+              />
+            )}
             {passwordInputIsInvalid && (
               <p className={styles.error}>🚨패스워드를 입력해주세요.</p>
             )}
