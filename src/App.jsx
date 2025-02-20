@@ -1,10 +1,12 @@
 import { useState } from "react";
-import Order from "./components/Order";
-import MyPage from "./components/MyPage";
+import AddProduct from "./pages/AddProduct/AddProduct";
+import Order from "./pages/Order/Order";
+import MyPage from "./pages/MyPage/MyPage";
 
 function App() {
   return (
     <>
+      <AddProduct />
       <MyPage />
       <Order></Order>
     </>

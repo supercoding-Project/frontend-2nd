@@ -2,7 +2,7 @@ import React from "react";
 import style from "./CartList.module.css";
 
 const CartList = ({ isOrderPage }) => {
-  console.log("isOrderPage:", isOrderPage);
+  // console.log("isOrderPage:", isOrderPage);
   return (
     <div className={style.cart__list}>
       <ul>
