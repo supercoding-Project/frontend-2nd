@@ -45,6 +45,7 @@ button {
 .input-container:nth-child(2) input {
   width: 304px;
   margin-left: auto;
+  margin-right: 10px;
 }
 
 .input-container input {
@@ -54,15 +55,23 @@ button {
   border: 1px solid #dcdbdc;
 }
 
-.duplicate-check-button {
-  padding: 11px 20px;
-  background: #565656;
-  color: white;
-  margin-left: 10px;
+.input-container:nth-child(7) input {
   border: none;
+  padding: 0;
 }
 
-.duplicate-check-button:hover {
+.duplicate-check-button,
+input[type="file"]::-webkit-file-upload-button {
+  height: 37.5px;
+  padding: 0px 20px;
+  background: #565656;
+  color: white;
+  border: 1px solid #565656;
+  cursor: pointer;
+}
+
+.duplicate-check-button:hover,
+input[type="file"]::-webkit-file-upload-button:hover {
   background: #1c1c1c;
 }
 

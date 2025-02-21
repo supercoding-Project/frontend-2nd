@@ -21,11 +21,11 @@ const SignUp = () => {
           </div>
           <div className={styles["input-container"]}>
             <label>비밀번호</label>
-            <input type="text" placeholder="비밀번호를 입력해주세요." />
+            <input type="password" placeholder="비밀번호를 입력해주세요." />
           </div>
           <div className={styles["input-container"]}>
             <label>비밀번호 확인</label>
-            <input type="text" placeholder="동일한 비밀번호를 입력해주세요." />
+            <input type="password" placeholder="동일한 비밀번호를 입력해주세요." />
           </div>
           <div className={styles["input-container"]}>
             <label>주소</label>
@@ -34,6 +34,10 @@ const SignUp = () => {
           <div className={styles["input-container"]}>
             <label>상세 주소</label>
             <input type="text" placeholder="상세 주소" />
+          </div>
+          <div className={styles["input-container"]}>
+            <label>프로필 사진</label>
+            <input type="file" />
           </div>
           <div className={styles["button-container"]}>
             <button type="button" className={styles["cancel-button"]}>
