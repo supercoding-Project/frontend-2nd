@@ -1,0 +1,23 @@
+.categories {
+  padding: 20px;
+}
+
+.h2 {
+  display: flex;
+  justify-content: center;
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.categoryButton {
+  padding: 10px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}

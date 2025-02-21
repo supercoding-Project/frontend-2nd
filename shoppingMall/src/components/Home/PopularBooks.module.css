@@ -1,0 +1,22 @@
+.popular {
+  padding: 20px;
+}
+
+.grid {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.bookCard {
+  width: 150px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.h2 {
+  display: flex;
+  justify-content: center;
+}

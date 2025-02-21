@@ -1,0 +1,212 @@
+[
+  {
+    "id": 1,
+    "title": "in",
+    "price": 20463,
+    "status": "최상급",
+    "imgUrl": "https://placehold.co/250x300"
+  },
+  {
+    "id": 2,
+    "title": "pellentesque eget,",
+    "price": 1675,
+    "status": "최상급",
+    "imgUrl": "https://placehold.co/250x300"
+  },
+  {
+    "id": 3,
+    "title": "elit. Etiam laoreet, libero",
+    "price": 16511,
+    "status": "최상급",
+    "imgUrl": "https://placehold.co/250x300"
+  },
+  {
+    "id": 4,
+    "title": "sit",
+    "price": 22623,
+    "status": "중급",
+    "imgUrl": "https://placehold.co/250x300"
+  },
+  {
+    "id": 5,
+    "title": "cursus et,",
+    "price": 16833,
+    "status": "최상급",
+    "imgUrl": "https://placehold.co/250x300"
+  },
+  {
+    "id": 6,
+    "title": "dictum. Phasellus in felis.",
+    "price": 28826,
+    "status": "최상급",
+    "imgUrl": "https://placehold.co/250x300"
+  },
+  {
+    "id": 7,
+    "title": "ipsum ac mi eleifend",
+    "price": 16301,
+    "status": "중급",
+    "imgUrl": "https://placehold.co/250x300"
+  },
+  {
+    "id": 8,
+    "title": "dui, in sodales elit erat",
+    "price": 3788,
+    "status": "중급",
+    "imgUrl": "https://placehold.co/250x300"
+  },
+  {
+    "id": 9,
+    "title": "iaculis",
+    "price": 29946,
+    "status": "상급",
+    "imgUrl": "https://placehold.co/250x300"
+  },
+  {
+    "id": 10,
+    "title": "non, lobortis",
+    "price": 26872,
+    "status": "최상급",
+    "imgUrl": "https://placehold.co/250x300"
+  },
+  {
+    "id": 11,
+    "title": "sollicitudin a,",
+    "price": 21727,
+    "status": "중급",
+    "imgUrl": "https://placehold.co/250x300"
+  },
+  {
+    "id": 12,
+    "title": "diam eu dolor egestas",
+    "price": 2523,
+    "status": "중급",
+    "imgUrl": "https://placehold.co/250x300"
+  },
+  {
+    "id": 13,
+    "title": "sed, sapien. Nunc pulvinar",
+    "price": 15161,
+    "status": "상급",
+    "imgUrl": "https://placehold.co/250x300"
+  },
+  {
+    "id": 14,
+    "title": "sit amet ornare",
+    "price": 17766,
+    "status": "상급",
+    "imgUrl": "https://placehold.co/250x300"
+  },
+  {
+    "id": 15,
+    "title": "non ante bibendum",
+    "price": 29353,
+    "status": "중급",
+    "imgUrl": "https://placehold.co/250x300"
+  },
+  {
+    "id": 16,
+    "title": "vitae, orci.",
+    "price": 12549,
+    "status": "중급",
+    "imgUrl": "https://placehold.co/250x300"
+  },
+  {
+    "id": 17,
+    "title": "mus. Proin",
+    "price": 21566,
+    "status": "중급",
+    "imgUrl": "https://placehold.co/250x300"
+  },
+  {
+    "id": 18,
+    "title": "et, rutrum eu,",
+    "price": 18535,
+    "status": "하급",
+    "imgUrl": "https://placehold.co/250x300"
+  },
+  {
+    "id": 19,
+    "title": "mollis vitae, posuere",
+    "price": 29628,
+    "status": "상급",
+    "imgUrl": "https://placehold.co/250x300"
+  },
+  {
+    "id": 20,
+    "title": "risus. Nulla eget metus eu",
+    "price": 5363,
+    "status": "상급",
+    "imgUrl": "https://placehold.co/250x300"
+  },
+  {
+    "id": 21,
+    "title": "sit amet",
+    "price": 22631,
+    "status": "하급",
+    "imgUrl": "https://placehold.co/250x300"
+  },
+  {
+    "id": 22,
+    "title": "blandit congue.",
+    "price": 22773,
+    "status": "상급",
+    "imgUrl": "https://placehold.co/250x300"
+  },
+  {
+    "id": 23,
+    "title": "accumsan",
+    "price": 10279,
+    "status": "중급",
+    "imgUrl": "https://placehold.co/250x300"
+  },
+  {
+    "id": 24,
+    "title": "quis lectus.",
+    "price": 9477,
+    "status": "중급",
+    "imgUrl": "https://placehold.co/250x300"
+  },
+  {
+    "id": 25,
+    "title": "dolor, nonummy ac, feugiat non,",
+    "price": 13756,
+    "status": "중급",
+    "imgUrl": "https://placehold.co/250x300"
+  },
+  {
+    "id": 26,
+    "title": "eget varius",
+    "price": 9405,
+    "status": "상급",
+    "imgUrl": "https://placehold.co/250x300"
+  },
+  {
+    "id": 27,
+    "title": "odio vel",
+    "price": 14381,
+    "status": "중급",
+    "imgUrl": "https://placehold.co/250x300"
+  },
+  {
+    "id": 28,
+    "title": "Pellentesque habitant morbi",
+    "price": 18549,
+    "status": "최상급",
+    "imgUrl": "https://placehold.co/250x300"
+  },
+  {
+    "id": 29,
+    "title": "Curabitur consequat, lectus sit",
+    "price": 28101,
+    "status": "최상급",
+    "imgUrl": "https://placehold.co/250x300"
+  },
+  {
+    "id": 30,
+    "title": "ultrices. Duis volutpat",
+    "price": 6920,
+    "status": "상급",
+    "imgUrl": "https://placehold.co/250x300"
+  }
+]
