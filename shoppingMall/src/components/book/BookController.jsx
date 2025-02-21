@@ -6,6 +6,7 @@ const BookController = () => {
   const [books, setBooks] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [currentCategory, setCurrentCategory] = useState("전체 도서");
 
   useEffect(() => {
     const fetchBooks = async () => {
@@ -24,6 +25,10 @@ const BookController = () => {
     fetchBooks();
   }, []);
 
+  const handleSelect = (selectedButton) => {
+    setCurrentCategory(selectedButton);
+  };
+
   const newlyRegisteredBooks = books.slice(books.length - 6);
 
   const bgColor = {
@@ -36,7 +41,13 @@ const BookController = () => {
   return (
     <div>
       <CardList title="새로 등록된 도서" books={newlyRegisteredBooks} bgColor={bgColor} />
-      <CardList title="전체 도서" books={books} bgColor={bgColor} />
+      <CardList
+        title="전체 도서"
+        books={books}
+        bgColor={bgColor}
+        handleSelect={handleSelect}
+        currentCategory={currentCategory}
+      />
     </div>
   );
 };
