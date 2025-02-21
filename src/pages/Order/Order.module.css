@@ -29,6 +29,7 @@ body {
         gap: 0.2rem;
         flex-direction: column;
         margin-top: 1rem;
+        position: relative;
         input {
           width: 100%;
           box-sizing: border-box;
@@ -45,6 +46,18 @@ body {
             margin: 0 0 10px 10px;
           }
         }
+        .errorMessage {
+          color: #eb0000;
+          font-size: 12px;
+          display: block;
+          position: absolute;
+          right: 0%;
+          bottom: -10px;
+          font-size: 12px;
+        }
+        .errorInput {
+          border: 1px solid red;
+        }
       }
       .orderUserEmailAgree {
       }
@@ -57,8 +70,6 @@ body {
       .orderPaymentRow {
         margin-top: 1rem;
         padding: 0.5rem 0;
-        /* display: flex;
-        flex-direction: column; */
         gap: 1rem;
         label {
           margin-bottom: 0.2rem;
@@ -87,6 +98,19 @@ body {
           .orderPaymentCvc {
             width: 40%;
           }
+        }
+        .errorMessage {
+          color: #eb0000;
+          font-size: 12px;
+          display: block;
+          position: absolute;
+          right: 0%;
+          bottom: -20px;
+          font-size: 12px;
+        }
+        .errorInput {
+          border: 1px solid red;
+          position: relative;
         }
       }
     }

@@ -60,7 +60,7 @@ const AddProduct = () => {
 
     // 오류가 있으면 메시지를 표시
     if (Object.values(newErrors).some((error) => error)) {
-      // 에러 메시지 출력 (추가적인 로직을 여기에 작성 가능)
+      // 에러 메시지 출력
     } else {
       alert("상품이 등록되었습니다!");
       // 상품 등록 로직
