@@ -11,7 +11,7 @@ const Header = () => {
     <header className={styles.Header}>
       <div>
         <div className={styles.section}>
-          <Link to="/signUp" className={styles.LinkSignUp}>
+          <Link to="/sign-up" className={styles.LinkSignUp}>
             회원가입
           </Link>
           <Link to="/logIn" className={styles.LinkLogIn}>
