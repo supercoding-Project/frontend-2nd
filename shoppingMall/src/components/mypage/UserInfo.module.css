@@ -1,0 +1,70 @@
+.userInfo {
+  padding: 0 2rem 2rem;
+  .userInfo__title {
+  }
+  .userInfo__container {
+    display: flex;
+    gap: 2rem;
+    .userInfo__profile {
+      padding: 1rem;
+
+      width: 20%;
+      border: 1px solid #ddd;
+      border-radius: 1000px;
+      width: 100px;
+      height: 100px;
+
+      .userInfo__profileImage {
+        width: 100px;
+        height: 100px;
+      }
+    }
+    .userInfo__info {
+      width: 80%;
+      .userInfo__row {
+        display: flex;
+        padding: 1rem;
+
+        .userInfo__label {
+          width: 20%;
+        }
+        .userInfo__value {
+        }
+
+        .userInfo__address {
+          display: flex;
+          gap: 2rem;
+
+          .userInfo__zipcode {
+          }
+          .userInfo__addressDetail {
+            .userInfo__addressMain {
+            }
+            .userInfo__addressSub {
+              margin-top: 0.5rem;
+            }
+          }
+        }
+      }
+    }
+  }
+  .userInfo__actions {
+    display: flex;
+    justify-content: end;
+    padding: 1rem;
+
+    .userInfo__editButton {
+      font-weight: bold;
+      padding: 0.7rem 2rem;
+      font-size: 1.1rem;
+      border-radius: 100px;
+      border: 2px solid var(--color-main);
+      color: var(--color-main);
+      background-color: #fff;
+      &:hover {
+        color: #fff;
+        background-color: var(--color-main);
+      }
+    }
+  }
+}

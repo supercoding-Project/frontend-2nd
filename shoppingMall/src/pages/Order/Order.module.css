@@ -1,0 +1,142 @@
+body {
+  --color-main: #237af6;
+  padding: 0;
+  margin: 0;
+  background-color: #fff;
+}
+.order {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1800px;
+  margin: auto;
+  .orderContainer {
+    width: 40%;
+    padding: 2rem;
+    .orderUser {
+      h3 {
+        margin: 0 0 1rem 0;
+      }
+      input {
+        font-size: 1rem;
+        padding: 1rem;
+        border: 1px solid #ddd;
+        font-size: 0.8rem;
+      }
+
+      .orderUserRow {
+        display: flex;
+        padding: 0.5rem 0;
+        gap: 0.2rem;
+        flex-direction: column;
+        margin-top: 1rem;
+        position: relative;
+        input {
+          width: 100%;
+          box-sizing: border-box;
+        }
+        .inputs {
+          display: flex;
+          align-items: center;
+          gap: 0.2rem;
+          .postalCode {
+            width: 25%;
+            margin: 0 0 10px 0;
+          }
+        }
+        .errorMessage {
+          color: #eb0000;
+          font-size: 12px;
+          display: block;
+          position: absolute;
+          right: 0%;
+          bottom: -10px;
+          font-size: 12px;
+        }
+        .errorInput {
+          border: 1px solid red;
+        }
+      }
+      .orderUserEmailAgree {
+      }
+    }
+    .orderPayment {
+      padding-top: 2rem;
+      h3 {
+        margin: 2rem 0 1rem 0;
+      }
+      .orderPaymentRow {
+        margin-top: 1rem;
+        padding: 0.5rem 0;
+        gap: 1rem;
+        label {
+          margin-bottom: 0.2rem;
+        }
+        .inputs {
+          display: flex;
+          border: 1px solid #ddd;
+          padding: 0.3rem;
+          align-items: center;
+          justify-content: center;
+          input {
+            border: 0;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.8rem;
+          }
+          .orderPaymentDash {
+            color: #ddd;
+          }
+        }
+        &:nth-child(3) {
+          display: flex;
+          .orderPaymentExpiration {
+            width: 60%;
+          }
+          .orderPaymentCvc {
+            width: 40%;
+          }
+        }
+        .errorMessage {
+          color: #eb0000;
+          font-size: 12px;
+          display: block;
+          position: absolute;
+          right: 0%;
+          bottom: -20px;
+          font-size: 12px;
+        }
+        .errorInput {
+          border: 1px solid red;
+          position: relative;
+        }
+      }
+    }
+    .orderAgree {
+      margin: 2rem 0;
+      font-weight: 900;
+    }
+    .orderButton {
+      display: flex;
+      justify-content: end;
+      button {
+        background-color: var(--color-main);
+        color: #fff;
+        font-weight: bold;
+        padding: 0.7rem 2rem;
+        font-size: 1.1rem;
+        border-radius: 100px;
+        border: 2px solid var(--color-main);
+        &:hover {
+          background-color: #fff;
+          color: var(--color-main);
+        }
+      }
+    }
+  }
+  .orderCart {
+    padding: 2rem;
+    width: 60%;
+    background-color: #f5f5f5;
+    text-align: center;
+  }
+}
