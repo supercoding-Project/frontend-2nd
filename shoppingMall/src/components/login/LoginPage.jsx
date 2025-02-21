@@ -1,13 +1,18 @@
-import { React, useState, useRef } from "react";
+import { React, useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { RiGoogleFill, RiKakaoTalkFill } from "react-icons/ri";
 import ScrollTopButton from "../common/ScrollTopButton";
 import { AiFillEye } from "react-icons/ai";
 import { AiFillEyeInvisible } from "react-icons/ai";
-import EyeOpen from "../../assets/Icons/eye.svg";
 import styles from "./LoginPage.module.css";
+import { useDispatch } from "react-redux";
+import { authActions } from "../../store";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
   const [enteredEmail, setEnteredEmail] = useState("");
@@ -22,6 +27,14 @@ const LoginPage = () => {
     value: false,
   });
 
+  useEffect(() => {
+    const isAuthenticated = localStorage.getItem("isAuthenticated");
+    if (isAuthenticated === "true") {
+      dispatch(authActions.logIn()); // Redux 상태를 업데이트하여 로그인 상태 유지
+      navigate("/", { replace: true }); // 로그인 상태에서 메인 화면으로 리디렉션
+    }
+  }, [dispatch, navigate]);
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
     setEnteredEmailIsTouched(true);
@@ -31,9 +44,6 @@ const LoginPage = () => {
 
     const emailIsValid = enteredEmail.includes("@");
     const pwIsValid = enteredPassword.trim().length > 0;
-
-    setEnteredEmailIsValid(emailIsValid);
-    setEnteredPasswordIsValid(pwIsValid);
 
     //enteredEmail email형식이 아니면 제출 안되게
 
@@ -47,10 +57,18 @@ const LoginPage = () => {
     console.log("submit success");
     setEnteredEmailIsValid(true);
     setEnteredPasswordIsValid(true);
+    localStorage.setItem("isAuthenticated", true);
+    localStorage.setItem("email", enteredEmail); // 이메일 저장
     console.log(enteredEmailIsValid);
     console.log(enteredPasswordIsValid);
     setEnteredEmail("");
     setEnteredPassword("");
+
+    dispatch(authActions.logIn());
+
+    setEnteredEmail("");
+    setEnteredPassword("");
+    navigate("/", { replace: false });
   };
 
   const handleEmailInput = (e) => {
