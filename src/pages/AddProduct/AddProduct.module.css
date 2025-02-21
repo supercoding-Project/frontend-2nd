@@ -1,0 +1,77 @@
+body {
+  --color-main: #237af6;
+  padding: 0;
+  margin: 0;
+  background-color: #fff;
+}
+
+.addProduct {
+  max-width: 1800px;
+  margin: auto;
+  padding: 2rem;
+  .addRow {
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+    position: relative;
+    label {
+      width: 15%;
+    }
+    input,
+    textarea {
+      width: 40%;
+      font-size: 1rem;
+      padding: 1rem;
+      border: 1px solid #ddd;
+      font-size: 0.8rem;
+    }
+    .bookImgLabel {
+      background-color: #f5f5f5;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      justify-content: center;
+      margin-left: 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      svg {
+        width: 25px;
+      }
+    }
+    .bookImgInput {
+      display: none;
+    }
+    .errorMessage {
+      color: #eb0000;
+      font-size: 12px;
+      display: block;
+      position: absolute;
+      left: 15%;
+      bottom: -20px;
+      font-size: 12px;
+    }
+    .errorInput {
+      border: 1px solid red;
+    }
+    .bookImgErrorMessage {
+      left: 80%;
+    }
+  }
+  .addProductButton {
+    display: flex;
+    justify-content: end;
+    button {
+      background-color: var(--color-main);
+      color: #fff;
+      font-weight: bold;
+      padding: 0.7rem 2rem;
+      font-size: 1.1rem;
+      border-radius: 100px;
+      border: 2px solid var(--color-main);
+      &:hover {
+        background-color: #fff;
+        color: var(--color-main);
+      }
+    }
+  }
+}
