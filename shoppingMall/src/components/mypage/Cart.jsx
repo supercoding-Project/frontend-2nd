@@ -4,7 +4,7 @@ import CartList from "./CartList";
 import CartTotal from "./CartTotal";
 import { Link } from "react-router-dom";
 
-const Cart = () => {
+const Cart = ({ setCart, cart, books }) => {
   return (
     <div className={style.cart}>
       <h3 className={style.cart__title}>장바구니</h3>
@@ -31,7 +31,8 @@ const Cart = () => {
             취소
           </div>
         </div>
-        <CartList />
+        <CartList cart={cart} books={books} setCart={setCart} />
+
         <CartTotal />
         <div className={style.cart__actions}>
           <button className={style.cart__orderButton}>

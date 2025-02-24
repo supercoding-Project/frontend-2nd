@@ -30,7 +30,7 @@ button {
     align-items: start;
     .btnAside {
       min-width: 130px;
-      background-color: #f5f5f5;
+      background-color: #fafafa;
       border-radius: 20px;
       ul {
         padding: 10px;

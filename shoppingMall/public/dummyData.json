@@ -1,0 +1,295 @@
+{
+  "users": [
+    {
+      "id": "user-001",
+      "name": "김민수",
+      "email": "minsu.kim@example.com",
+      "address": {
+        "zipCode": "12345",
+        "address": "서울시 강남구 역삼동",
+        "detail": "5층 501호"
+      },
+      "cart": [
+        {
+          "productId": "book-001",
+          "quantity": 2
+        },
+        {
+          "productId": "book-003",
+          "quantity": 1
+        }
+      ],
+      "wishlist": [{ "productId": "book-005" }, { "productId": "book-007" }],
+      "soldBooks": [
+        {
+          "productId": "book-002",
+          "quantity": 5,
+          "isSold": true
+        },
+        {
+          "productId": "book-004",
+          "quantity": 8,
+          "isSold": false
+        }
+      ],
+      "purchasedBooks": [
+        {
+          "productId": "book-003",
+          "quantity": 1,
+          "price": 10000,
+          "purchaseDate": "2025.02.15 10:00:00"
+        }
+      ]
+    },
+    {
+      "id": "user-002",
+      "name": "이서진",
+      "email": "seojin.lee@example.com",
+      "address": {
+        "zipCode": "54321",
+        "address": "부산시 해운대구 우동",
+        "detail": "3층 303호"
+      },
+      "cart": [
+        {
+          "productId": "book-007",
+          "quantity": 1
+        },
+        {
+          "productId": "book-010",
+          "quantity": 1
+        }
+      ],
+      "wishlist": [{ "productId": "book-001" }, { "productId": "book-006" }],
+      "soldBooks": [
+        {
+          "productId": "book-006",
+          "quantity": 2,
+          "saleDate": "2025.02.14 16:30:00",
+          "isSold": true
+        }
+      ],
+      "purchasedBooks": [
+        {
+          "productId": "book-004",
+          "quantity": 1,
+          "purchaseDate": "2025.02.15 12:00:00"
+        }
+      ]
+    },
+    {
+      "id": "user-003",
+      "name": "박하늘",
+      "email": "haneul.park@example.com",
+      "address": {
+        "zipCode": "67890",
+        "address": "서울시 송파구 잠실동",
+        "detail": "10층 1002호"
+      },
+      "cart": [
+        {
+          "productId": "book-009",
+          "quantity": 3
+        }
+      ],
+      "wishlist": [{ "productId": "book-002" }, { "productId": "book-008" }],
+      "soldBooks": [
+        {
+          "productId": "book-008",
+          "quantity": 1,
+          "saleDate": "2025.02.16 11:30:00",
+          "isSold": true
+        }
+      ],
+      "purchasedBooks": [
+        {
+          "productId": "book-007",
+          "quantity": 1,
+          "purchaseDate": "2025.02.17 09:45:00"
+        }
+      ]
+    }
+  ],
+  "books": [
+    {
+      "id": "book-001",
+      "category": "소설",
+      "title": "어둠의 미소",
+      "imgUrl": "https://placehold.co/250x300",
+      "condition": "최상급",
+      "author": "김미정",
+      "publisher": "문학의집",
+      "date": "2023.06.15",
+      "originalPrice": "15000",
+      "salePrice": "12000",
+      "quantity": 10,
+      "soldQuantity": 1,
+      "remainingQuantity": 9,
+      "description": "어둠 속에서 숨겨진 진실을 찾아가는 이야기",
+      "isSold": false,
+      "sellerId": "user-001"
+    },
+    {
+      "id": "book-002",
+      "category": "논픽션",
+      "title": "한 여름의 꿈",
+      "imgUrl": "https://placehold.co/250x300",
+      "condition": "상급",
+      "author": "김지훈",
+      "publisher": "푸른하늘",
+      "date": "2022.03.22",
+      "originalPrice": "12000",
+      "salePrice": "9000",
+      "quantity": 5,
+      "soldQuantity": 1,
+      "remainingQuantity": 4,
+      "description": "세상을 이해하는 깊은 통찰",
+      "isSold": true,
+      "sellerId": "user-001"
+    },
+    {
+      "id": "book-003",
+      "category": "역사",
+      "title": "세계사의 흐름",
+      "imgUrl": "https://placehold.co/250x300",
+      "condition": "중급",
+      "author": "박성규",
+      "publisher": "지식의나무",
+      "date": "2021.11.10",
+      "originalPrice": "20000",
+      "salePrice": "15000",
+      "quantity": 3,
+      "soldQuantity": 1,
+      "remainingQuantity": 2,
+      "description": "세계 역사에 대한 깊은 이해를 제공하는 책",
+      "isSold": false,
+      "sellerId": "user-001"
+    },
+    {
+      "id": "book-004",
+      "category": "소설",
+      "title": "끝없는 여정",
+      "imgUrl": "https://placehold.co/250x300",
+      "condition": "하급",
+      "author": "이준호",
+      "publisher": "북스컴퍼니",
+      "date": "2020.07.05",
+      "originalPrice": "8000",
+      "salePrice": "6000",
+      "quantity": 8,
+      "soldQuantity": 1,
+      "remainingQuantity": 7,
+      "description": "이야기 속에서 주인공의 성장이 그려지는 소설",
+      "isSold": false,
+      "sellerId": "user-001"
+    },
+    {
+      "id": "book-005",
+      "category": "논픽션",
+      "title": "스마트한 공부법",
+      "imgUrl": "https://placehold.co/250x300",
+      "condition": "최상급",
+      "author": "최지원",
+      "publisher": "지식의미래",
+      "date": "2022.08.15",
+      "originalPrice": "10000",
+      "salePrice": "7500",
+      "quantity": 12,
+      "soldQuantity": 0,
+      "remainingQuantity": 12,
+      "description": "효율적인 공부를 위한 새로운 접근법",
+      "isSold": false,
+      "sellerId": "user-001"
+    },
+    {
+      "id": "book-006",
+      "category": "소설",
+      "title": "그 겨울의 끝에서",
+      "imgUrl": "https://placehold.co/250x300",
+      "condition": "상급",
+      "author": "김수진",
+      "publisher": "바람의서재",
+      "date": "2021.05.10",
+      "originalPrice": "11000",
+      "salePrice": "8500",
+      "quantity": 7,
+      "soldQuantity": 2,
+      "remainingQuantity": 5,
+      "description": "겨울의 추위를 이겨내는 따뜻한 이야기",
+      "isSold": true,
+      "sellerId": "user-002"
+    },
+    {
+      "id": "book-007",
+      "category": "역사",
+      "title": "고대 문명의 비밀",
+      "imgUrl": "https://placehold.co/250x300",
+      "condition": "최상급",
+      "author": "박지훈",
+      "publisher": "타임스북",
+      "date": "2023.01.05",
+      "originalPrice": "18000",
+      "salePrice": "14000",
+      "quantity": 5,
+      "soldQuantity": 0,
+      "remainingQuantity": 5,
+      "description": "고대 문명에 대한 심층 탐구",
+      "isSold": false,
+      "sellerId": "user-002"
+    },
+    {
+      "id": "book-008",
+      "category": "소설",
+      "title": "하늘을 나는 소녀",
+      "imgUrl": "https://placehold.co/250x300",
+      "condition": "최상급",
+      "author": "이경화",
+      "publisher": "하늘책방",
+      "date": "2022.09.25",
+      "originalPrice": "13000",
+      "salePrice": "10000",
+      "quantity": 6,
+      "soldQuantity": 1,
+      "remainingQuantity": 5,
+      "description": "꿈을 따라 하늘을 나는 소녀의 이야기",
+      "isSold": true,
+      "sellerId": "user-003"
+    },
+    {
+      "id": "book-009",
+      "category": "논픽션",
+      "title": "인공지능의 미래",
+      "imgUrl": "https://placehold.co/250x300",
+      "condition": "중급",
+      "author": "정우성",
+      "publisher": "미래지식",
+      "date": "2022.12.20",
+      "originalPrice": "25000",
+      "salePrice": "18000",
+      "quantity": 4,
+      "soldQuantity": 0,
+      "remainingQuantity": 4,
+      "description": "인공지능이 이끌 미래의 변화를 다룬 책",
+      "isSold": false,
+      "sellerId": "user-003"
+    },
+    {
+      "id": "book-010",
+      "category": "과학",
+      "title": "우주의 시작",
+      "imgUrl": "https://placehold.co/250x300",
+      "condition": "하급",
+      "author": "이상훈",
+      "publisher": "스페이스북",
+      "date": "2021.04.02",
+      "originalPrice": "22000",
+      "salePrice": "17000",
+      "quantity": 9,
+      "soldQuantity": 0,
+      "remainingQuantity": 9,
+      "description": "우주에 대한 놀라운 사실들을 다룬 책",
+      "isSold": false,
+      "sellerId": "user-002"
+    }
+  ]
+}

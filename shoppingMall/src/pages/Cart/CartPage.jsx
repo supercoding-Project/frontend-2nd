@@ -1,37 +1,19 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import style from "./MyPage.module.css";
+import style from "../MyPage/MyPage.module.css";
 import UserInfo from "../../components/mypage/UserInfo";
 import Cart from "../../components/mypage/Cart";
 import SalesList from "../../components/mypage/SalesList";
 import OrderList from "../../components/mypage/OrderList";
 
-const MyPage = () => {
+const CartPage = () => {
   const [user, setUser] = useState(null); // 유저 상태
   const [books, setBooks] = useState([]); //책 데이터
-  const [cart, setCart] = useState([]); // 장바구니 정보
   const [loading, setLoading] = useState(true); // 로딩 상태
   const [error, setError] = useState(null); // 에러 상태
-  // const [activeTab, setActiveTab] = useState("userInfo"); // 클릭된 탭 추적
-  const [activeTab, setActiveTab] = useState("salesList"); // 클릭된 탭 추적
+  const [activeTab, setActiveTab] = useState("cart"); // 클릭된 탭 추적
 
   const loggedInUserId = "user-001"; // 로그인한 유저의 ID (예시)
-
-  // 유저 데이터를 서버에서 가져오는 axios 요청
-  // useEffect(() => {
-  //   const fetchUserData = async () => {
-  //     try {
-  //       const response = await axios.get(`/api/users/${loggedInUserId}`);
-  //       setUser(response.data); // 받아온 데이터를 상태에 저장
-  //       setLoading(false); // 로딩 완료
-  //     } catch (err) {
-  //       setError("유저 정보를 불러오는 데 실패했습니다.");
-  //       setLoading(false);
-  //     }
-  //   };
-
-  //   fetchUserData();
-  // }, [loggedInUserId]);
 
   // 유저 데이터를 JSON 파일에서 가져오는 axios 요청
   useEffect(() => {
@@ -42,11 +24,7 @@ const MyPage = () => {
           (user) => user.id === loggedInUserId
         );
         const booksData = response.data.books;
-
-        if (userData) {
-          setUser(userData); // 유저 정보 저장
-          setCart(userData.cart || []); // 장바구니 정보 저장 (기본값: 빈 배열)
-        }
+        setUser(userData); // 받아온 유저 데이터를 상태에 저장
         setBooks(booksData); // 전체 책 데이터를 상태에 저장
         setLoading(false); // 로딩 완료
       } catch (err) {
@@ -62,34 +40,6 @@ const MyPage = () => {
   const getCartBooks = () => {
     if (user && books.length > 0) {
       return user.cart.map((cartItem) => {
-        const book = books.find((book) => book.id === cartItem.productId);
-        return {
-          ...cartItem,
-          ...book, // 책 정보를 추가
-        };
-      });
-    }
-    return [];
-  };
-
-  // 판매목록
-  const getSoldBooks = () => {
-    if (user && books.length > 0) {
-      return user.soldBooks.map((cartItem) => {
-        const book = books.find((book) => book.id === cartItem.productId);
-        return {
-          ...cartItem,
-          ...book, // 책 정보를 추가
-        };
-      });
-    }
-    return [];
-  };
-
-  // 구매목록
-  const getPurchasedBooks = () => {
-    if (user && books.length > 0) {
-      return user.purchasedBooks.map((cartItem) => {
         const book = books.find((book) => book.id === cartItem.productId);
         return {
           ...cartItem,
@@ -140,18 +90,14 @@ const MyPage = () => {
         </aside>
         <section className={style.mypageSection}>
           {activeTab === "userInfo" && <UserInfo user={user} />}
-          {/* {activeTab === "cart" && <Cart cartBooks={getCartBooks()} />} */}
           {activeTab === "cart" && (
-            <Cart cart={user.cart} books={getCartBooks()} setCart={setCart} />
+            <Cart cart={user.cart} books={getCartBooks()} />
           )}
           {activeTab === "salesList" && (
-            <SalesList salesList={user.soldBooks} books={getSoldBooks()} />
+            <SalesList salesList={user.soldBooks} />
           )}
           {activeTab === "orderList" && (
-            <OrderList
-              orderList={user.purchasedBooks}
-              books={getPurchasedBooks()}
-            />
+            <OrderList orderList={user.purchasedBooks} />
           )}
         </section>
       </div>
@@ -159,4 +105,4 @@ const MyPage = () => {
   );
 };
 
-export default MyPage;
+export default CartPage;
