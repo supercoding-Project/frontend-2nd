@@ -19,6 +19,7 @@
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.1.5",
     "recoil": "^0.7.7",
+    "sass": "^1.85.0",
     "styled-components": "^6.1.15",
     "swiper": "^11.2.4"
   },
