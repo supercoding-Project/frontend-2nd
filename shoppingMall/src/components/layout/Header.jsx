@@ -16,10 +16,10 @@ const Header = () => {
   const navigate = useNavigate();
 
   const handleLogOut = (e) => {
-    e.preventDefault;
+    e.preventDefault();
     localStorage.removeItem("isAuthenticated");
     localStorage.removeItem("email");
-    dispatch(authActions.logout());
+    dispatch(authActions.logOut());
     navigate("/", { replace: false });
   };
   return (
@@ -70,7 +70,7 @@ const Header = () => {
           </div>
         </div>
         <nav className={styles.navbar}>
-          <Link to="/category" className={styles.LinkLogIn}>
+          <Link to="/bookList" className={styles.LinkLogIn}>
             전체 도서
           </Link>
           <Link to="/category/price" className={styles.LinkLogIn}>

@@ -8,6 +8,7 @@ import styles from "./LoginPage.module.css";
 import { useDispatch } from "react-redux";
 import { authActions } from "../../store";
 import { useNavigate } from "react-router-dom";
+import { logIn } from "../../API/AuthService";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -30,17 +31,15 @@ const LoginPage = () => {
   useEffect(() => {
     const isAuthenticated = localStorage.getItem("isAuthenticated");
     if (isAuthenticated === "true") {
-      dispatch(authActions.logIn()); // Redux 상태를 업데이트하여 로그인 상태 유지
-      navigate("/", { replace: true }); // 로그인 상태에서 메인 화면으로 리디렉션
+      dispatch(authActions.logIn());
+      navigate("/", { replace: true });
     }
   }, [dispatch, navigate]);
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
     setEnteredEmailIsTouched(true);
     setEnteredPasswordIsTouched(true);
-    console.log("enteredEmail", enteredEmail);
-    console.log("enteredPassword", enteredPassword);
 
     const emailIsValid = enteredEmail.includes("@");
     const pwIsValid = enteredPassword.trim().length > 0;
@@ -49,26 +48,25 @@ const LoginPage = () => {
 
     if (!emailIsValid || !pwIsValid) {
       console.log("submit fail!");
-
-      console.log(enteredEmailIsValid);
-      console.log(enteredPasswordIsValid);
       return;
     }
-    console.log("submit success");
-    setEnteredEmailIsValid(true);
-    setEnteredPasswordIsValid(true);
-    localStorage.setItem("isAuthenticated", true);
-    localStorage.setItem("email", enteredEmail); // 이메일 저장
-    console.log(enteredEmailIsValid);
-    console.log(enteredPasswordIsValid);
-    setEnteredEmail("");
-    setEnteredPassword("");
 
-    dispatch(authActions.logIn());
-
-    setEnteredEmail("");
-    setEnteredPassword("");
-    navigate("/", { replace: false });
+    try {
+      const response = await logIn(enteredEmail, enteredPassword);
+      dispatch(authActions.logIn());
+      setEnteredEmail("");
+      setEnteredPassword("");
+      navigate("/", { replace: false });
+    } catch (error) {
+      alert(error.message);
+    }
+    // console.log("submit success");
+    // setEnteredEmailIsValid(true);
+    // setEnteredPasswordIsValid(true);
+    // localStorage.setItem("isAuthenticated", true);
+    // localStorage.setItem("email", enteredEmail); // 이메일 저장
+    // setEnteredEmail("");
+    // setEnteredPassword("");
   };
 
   const handleEmailInput = (e) => {

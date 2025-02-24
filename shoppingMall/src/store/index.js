@@ -1,7 +1,7 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 
 const initialAuthState = {
-  isAuthenticated: localStorage.getItem("isAuthenticated") === false,
+  isAuthenticated: localStorage.getItem("isAuthenticated") === "true",
 };
 
 const authSlice = createSlice({
