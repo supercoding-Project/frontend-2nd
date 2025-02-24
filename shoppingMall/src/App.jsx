@@ -7,7 +7,7 @@ import Login from "./pages/login/Login";
 import MyPage from "./pages/MyPage/MyPage";
 import Order from "./pages/Order/Order";
 import AddProduct from "./pages/AddProduct/AddProduct";
-import CartPage from "./pages/Cart/CartPage";
+import CartPage from "./pages/MyPage/CartPage";
 import OrderComplete from "./pages/Order/OrderComplete";
 
 function App() {
