@@ -1,29 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import style from "./SalesList.module.css";
-import axios from "axios";
-const API_URL = "/api/v1/product/myproductlist";
 
-const SalesList = () => {
+const SalesList = ({ salesList, books }) => {
   const [activeItem, setActiveItem] = useState(null); // 클릭된 항목을 추적하는 상태
-  const [books, setBooks] = useState([]);
-  // console.log(books);
 
-  useEffect(() => {
-    const token = localStorage.getItem("token"); // 예시
-    axios
-      .get(API_URL, {
-        headers: {
-          Authorization: `Bearer ${token}`, // 헤더에 토큰 추가
-        },
-      })
-      .then((response) => {
-        console.log(response.data); // 데이터 형태 확인
-        setBooks(Array.isArray(response.data) ? response.data : []);
-      })
-      .catch((error) => {
-        console.error("API 요청 실패:", error);
-      });
-  }, []);
+  const isListToggle = (productId) => {
+    // 클릭된 항목이 이미 활성화되어 있으면 비활성화, 아니면 활성화
+    setActiveItem((prevItem) => (prevItem === productId ? null : productId));
+  };
 
   return (
     <div className={style.salesList}>
@@ -34,13 +18,21 @@ const SalesList = () => {
       ) : (
         <ul>
           {books.map((book) => {
+            // salesList에서 book.productId에 해당하는 항목을 찾음
+            const saleItem = salesList.find(
+              (item) => item.productId === book.productId
+            );
+
             return (
-              <li key={book.product_id}>
-                <div className={style.saleContainer}>
+              <li key={book.productId}>
+                <div
+                  className={style.saleContainer}
+                  onClick={() => isListToggle(book.productId)}
+                >
                   <div className={style.sale__itemDetails}>
                     <div className={style.product__image}>
                       <img
-                        src={book.imageUrl || "https://placehold.co/250x300"}
+                        src="https://placehold.co/250x300"
                         alt="상품 이미지"
                       />
                     </div>
@@ -55,21 +47,18 @@ const SalesList = () => {
                         <div className={style.product__publisher}>
                           {book.publisher}
                         </div>
-                        /
-                        <div className={style.product__date}>
-                          {new Date(book.publish_date).toLocaleDateString()}
-                        </div>
+                        /<div className={style.product__date}>{book.date}</div>
                       </div>
                       <div className={style.product__price}>
                         <span className={style.product__priceValue}>
-                          {Number(book.sale_price).toLocaleString()}
+                          {Number(book.salePrice).toLocaleString()}
                         </span>
                         <span className={style.product__priceUnit}>원</span>
                       </div>
                     </div>
                   </div>
                   <div className={style.sale__itemState}>
-                    {book.stock_quantity === 0 ? (
+                    {saleItem && saleItem.isSold ? (
                       <div className={style.state__soldOut}>판매완료</div>
                     ) : (
                       <div className={style.state__onSale}>판매중</div>
@@ -78,6 +67,11 @@ const SalesList = () => {
                   <div className={style.sale__itemBtn}>
                     <button>수정</button>
                   </div>
+                </div>
+                <div
+                  className={`${style.additionalInfo} ${activeItem === book.productId ? style.active : ""}`}
+                >
+                  <p>구매한 사람 목록</p>
                 </div>
               </li>
             );

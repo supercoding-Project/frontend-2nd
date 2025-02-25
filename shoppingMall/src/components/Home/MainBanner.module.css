@@ -1,8 +1,7 @@
 .banner {
-  width: 100%;
+  margin-top: 30px;
+  width: 1000px;
   height: 300px;
-  background: linear-gradient(135deg, #007bff, #0056b3);
-  color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,4 +21,15 @@
 
 .button:hover {
   background-color: #f0f0f0;
+}
+
+.bannerImage {
+  width: 1000px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+}
+
+.bannerStyle {
+  --swiper-theme-color: lightgray; /* 원하는 색상으로 변경 */
 }

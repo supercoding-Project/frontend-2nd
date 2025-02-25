@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import style from "./AddProduct.module.css";
 import axios from "axios";
 
+const API_URL = "/api/v1/product";
+
 const AddProduct = () => {
   const [category, setCategory] = useState("");
   const [name, setName] = useState("");
