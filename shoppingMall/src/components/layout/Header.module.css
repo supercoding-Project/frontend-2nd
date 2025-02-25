@@ -58,14 +58,9 @@
 }
 
 .navbar {
-<<<<<<< HEAD
-  height: 60px;
-  padding-top: 20px;
-=======
   height: 50px;
   margin-top: 25px;
   padding-top: 15px;
->>>>>>> origin/dev
   display: flex;
   justify-content: center;
   color: white;
