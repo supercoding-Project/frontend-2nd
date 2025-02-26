@@ -75,6 +75,7 @@ const BookController = () => {
         badgeColor={badgeColor}
         currentPage={currentPage}
         handlePagination={handlePagination}
+        totalPage={totalPage}
       />
     </>
   );

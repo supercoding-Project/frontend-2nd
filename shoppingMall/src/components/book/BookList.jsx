@@ -3,7 +3,7 @@ import { CiImageOff } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import Pagination from "../pagination/Pagination";
 
-const BookList = ({ title, books, badgeColor, currentPage, handlePagination }) => {
+const BookList = ({ title, books, badgeColor, currentPage, handlePagination, totalPage }) => {
   return (
     <section className={`${styles["container"]} ${title === "새로 등록된 도서" && styles["container-bg"]}`}>
       <div className={styles["title-container"]}>
@@ -29,7 +29,9 @@ const BookList = ({ title, books, badgeColor, currentPage, handlePagination }) =
           </Link>
         ))}
       </ul>
-      {title === "전체 도서" && <Pagination currentPage={currentPage} handlePagination={handlePagination} />}
+      {title === "전체 도서" && totalPage > 1 && (
+        <Pagination currentPage={currentPage} handlePagination={handlePagination} />
+      )}
     </section>
   );
 };
