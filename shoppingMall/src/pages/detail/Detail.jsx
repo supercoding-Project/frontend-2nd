@@ -4,12 +4,15 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { CiImageOff } from "react-icons/ci";
 import { AiOutlineLoading } from "react-icons/ai";
+import { LiaMinusSolid } from "react-icons/lia";
+import { LiaPlusSolid } from "react-icons/lia";
 
 const Detail = () => {
   const [randomBooks, setRandomBooks] = useState([]);
   const [currentBook, setCurrentBook] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [count, setCount] = useState(1);
 
   const { bookId } = useParams();
 
@@ -55,6 +58,20 @@ const Detail = () => {
     window.scrollTo(0, 0);
     fetchCurrentBook();
   }, [bookId]);
+
+  const handleIncreaseCount = () => {
+    if (count !== currentBook.stockQuantity) {
+      setCount((prevCount) => prevCount + 1);
+    } else {
+      alert("현재 재고를 초과하여 주문할 수 없습니다.");
+    }
+  };
+
+  const handleDecreaseCount = () => {
+    if (count !== 1) {
+      setCount((prevCount) => prevCount - 1);
+    }
+  };
 
   if (isLoading) {
     return (
@@ -102,7 +119,7 @@ const Detail = () => {
           </div>
           <div className={styles["info"]}>
             <p>배송비</p>
-            <p>3,500원 (판매자 상품 30,000원 이상 구매 시 무료배송)</p>
+            <p>3500원 (판매자 상품 30,000원 이상 구매 시 무료배송)</p>
           </div>
         </div>
       </div>
@@ -127,6 +144,30 @@ const Detail = () => {
             </Link>
           ))}
         </ul>
+      </div>
+
+      <div className={styles["buy-container"]}>
+        <div className={styles["count-container"]}>
+          <p>수량</p>
+          <button onClick={handleDecreaseCount}>
+            <LiaMinusSolid />
+          </button>
+          <span>{count}</span>
+          <button onClick={handleIncreaseCount}>
+            <LiaPlusSolid />
+          </button>
+        </div>
+        <div className={styles["price-container"]}>
+          <p>결제예정금액</p>
+          <p>
+            {currentBook.salePrice * count}
+            <span>원</span>
+          </p>
+        </div>
+        <div className={styles["action-container"]}>
+          <button>장바구니</button>
+          <button>바로구매</button>
+        </div>
       </div>
     </div>
   );

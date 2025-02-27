@@ -143,3 +143,81 @@
     transform: rotate(0deg);
   }
 }
+
+.buy-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #f9f9f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+  padding: 15px;
+}
+
+.count-container {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.count-container button {
+  border: 1px solid #e9e9e9;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+
+.count-container span {
+  font-size: 18px;
+}
+
+.price-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.price-container p:last-child {
+  min-width: 130px;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: end;
+  color: #3471f0;
+}
+
+.price-container span {
+  font-size: initial;
+  vertical-align: middle;
+  color: initial;
+  font-weight: normal;
+  margin-left: 5px;
+}
+
+.action-container button {
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.action-container button:first-child {
+  background: #565656;
+  padding: 10px 20px;
+}
+
+.action-container button:first-child:hover {
+  background: #1c1c1c;
+}
+
+.action-container button:last-child {
+  background: #3471f0;
+  padding: 10px 50px;
+}
+
+.action-container button:last-child:hover {
+  background: #234896;
+}
