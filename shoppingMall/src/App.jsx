@@ -7,6 +7,7 @@ import Login from "./pages/login/Login";
 import MyPage from "./pages/MyPage/MyPage";
 import Order from "./pages/Order/Order";
 import AddProduct from "./pages/AddProduct/AddProduct";
+import Detail from "./pages/detail/Detail";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/order" element={<Order />} />
         <Route path="/addproduct" element={<AddProduct />} />
+        <Route path="/detail/:bookId" element={<Detail />} />
       </Routes>
     </Layout>
   );
