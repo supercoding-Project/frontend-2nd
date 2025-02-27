@@ -13,16 +13,16 @@ const BookList = ({ title, books, badgeColor, currentPage, handlePagination, tot
         {books.map((item) => (
           <Link to={`/detail/${item.productId}`} key={item.productId}>
             <li className={styles["card"]}>
-              <div className={styles["card-image-container"]} style={{ background: `${!item.imageUrl && "#E9E9E9"}` }}>
-                <span className={styles["badge"]} style={{ background: badgeColor[item.status] }}>
-                  {item.status}급
-                </span>
-                {item.imageUrl ? (
-                  <img src={item.imageUrl} alt={item.title} draggable="false" className={styles["card-image"]} />
-                ) : (
+              <span className={styles["badge"]} style={{ background: badgeColor[item.status] }}>
+                {item.status}급
+              </span>
+              {item.imageUrl ? (
+                <img src={item.imageUrl} alt={item.title} draggable="false" className={styles["card-image"]} />
+              ) : (
+                <div className={styles["card-image-container"]}>
                   <CiImageOff />
-                )}
-              </div>
+                </div>
+              )}
               <h4 className={styles["card-title"]}>{item.title}</h4>
               <p className={styles["card-price"]}>{item.salePrice}원</p>
             </li>
