@@ -97,9 +97,9 @@ const Detail = () => {
           <span>|</span>
           <p>출판사 {currentBook.publisher}</p>
           <span>|</span>
-          <p>출간일 {currentBook.publishDate}</p>
+          <p>출간일 {new Date(currentBook.publishDate).toLocaleDateString()}</p>
           <span>|</span>
-          <p>상품등록일 {currentBook.createdAt}</p>
+          <p>상품등록일 {new Date(currentBook.createdAt).toLocaleDateString()}</p>
         </div>
       </div>
       <div className={styles["card-detail"]}>
