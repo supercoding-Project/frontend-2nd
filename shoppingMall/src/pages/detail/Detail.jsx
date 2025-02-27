@@ -28,7 +28,7 @@ const Detail = () => {
       setIsLoading(true);
 
       try {
-        const res = await axios.get("http://localhost:5981/api/display/all");
+        const res = await axios.get("http://43.200.136.205:8080/api/display/all");
         const books = res.data.content.sort(() => Math.random() - 0.5).slice(0, 6);
         setRandomBooks(books);
       } catch (error) {
@@ -46,7 +46,7 @@ const Detail = () => {
       setIsLoading(true);
 
       try {
-        const res = await axios.get(`http://localhost:5981/api/display/all/${bookId}`);
+        const res = await axios.get(`http://43.200.136.205:8080/api/display/${bookId}`);
         setCurrentBook(res.data);
       } catch (error) {
         setError(error);
@@ -132,7 +132,7 @@ const Detail = () => {
         <p className={styles["random-books-title"]}>추천 도서</p>
         <ul className={styles["random-books-container"]}>
           {randomBooks.map((item) => (
-            <Link to={`/detail/${item.id}`} key={item.id}>
+            <Link to={`/detail/${item.productId}`} key={item.productId}>
               <li className={styles["random-book"]}>
                 <div>
                   <span style={{ background: badgeColor[item.status] }}>{item.status}급</span>
