@@ -3,10 +3,9 @@ import styles from "./Detail.module.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { CiImageOff } from "react-icons/ci";
-import BookList from "../../components/book/BookList";
 
 const Detail = () => {
-  const [books, setBooks] = useState([]);
+  const [randomBooks, setRandomBooks] = useState([]);
   const [currentBook, setCurrentBook] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -20,32 +19,40 @@ const Detail = () => {
     하: "#6D7480",
   };
 
-  const getCurrentBook = () => {
-    return axios.get(`http://localhost:5981/api/display/all/${bookId}`);
-  };
+  useEffect(() => {
+    const fetchRandomBooks = async () => {
+      setIsLoading(true);
 
-  const getBooks = () => {
-    return axios.get("http://localhost:5981/api/display/all");
-  };
+      try {
+        const res = await axios.get("http://localhost:5981/api/display/all");
+        const books = res.data.content.sort(() => Math.random() - 0.5).slice(0, 6);
+        setRandomBooks(books);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-  const fetchBook = async () => {
-    setIsLoading(true);
-
-    try {
-      const res = await axios.all([getCurrentBook(), getBooks()]);
-      const randomBooks = res[1].data.content.sort(() => Math.random() - 0.5).slice(0, 6);
-      setBooks(randomBooks);
-      setCurrentBook(res[0].data);
-    } catch (error) {
-      setError(error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+    fetchRandomBooks();
+  }, []);
 
   useEffect(() => {
+    const fetchCurrentBook = async () => {
+      setIsLoading(true);
+
+      try {
+        const res = await axios.get(`http://localhost:5981/api/display/all/${bookId}`);
+        setCurrentBook(res.data);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
     window.scrollTo(0, 0);
-    fetchBook();
+    fetchCurrentBook();
   }, [bookId]);
 
   return (
@@ -94,7 +101,7 @@ const Detail = () => {
       <div className={styles["container"]}>
         <p className={styles["random-books-title"]}>추천 도서</p>
         <ul className={styles["random-books-container"]}>
-          {books.map((item) => (
+          {randomBooks.map((item) => (
             <Link to={`/detail/${item.id}`} key={item.id}>
               <li className={styles["random-book"]}>
                 <div>
