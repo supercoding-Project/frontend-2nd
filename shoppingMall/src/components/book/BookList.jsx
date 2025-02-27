@@ -11,7 +11,7 @@ const BookList = ({ title, books, badgeColor, currentPage, handlePagination, tot
       </div>
       <ul className={styles["card-container"]}>
         {books.map((item) => (
-          <Link to={`/detail/${item.id}`} key={item.id}>
+          <Link to={`/detail/${item.productId}`} key={item.productId}>
             <li className={styles["card"]}>
               <div className={styles["card-image-container"]} style={{ background: `${!item.imageUrl && "#E9E9E9"}` }}>
                 <span className={styles["badge"]} style={{ background: badgeColor[item.status] }}>
