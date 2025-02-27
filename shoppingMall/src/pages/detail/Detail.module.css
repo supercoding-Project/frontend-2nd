@@ -93,6 +93,7 @@
 }
 
 .random-book {
+  width: calc((1000px - 5 * 20px) / 6);
   position: relative;
 }
 
@@ -101,6 +102,12 @@
   color: white;
   position: absolute;
   font-size: 14px;
+}
+
+.random-book img {
+  width: 100%;
+  height: 200px;
+  display: block;
 }
 
 .random-book h4 {
