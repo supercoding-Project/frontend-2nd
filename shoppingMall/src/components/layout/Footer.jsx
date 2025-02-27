@@ -15,10 +15,12 @@ const Footer = () => {
         </div>
         <div className={styles.left}>
           <div className={styles.h3}>고객만족센터</div>
-          <div className={styles.h2}>8282-8282</div>
-        </div>
-        <div>
-          <button className={styles.btnContent}>카카오톡 문의</button>
+          <span className={styles.h2}>
+            8282-8282
+            <span className={styles.btnContainer}>
+              <button className={styles.btnContent}>상담시간 안내</button>
+            </span>
+          </span>
         </div>
       </div>
       <p className={styles.copy}>
