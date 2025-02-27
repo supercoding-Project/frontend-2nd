@@ -3,6 +3,7 @@ import styles from "./Detail.module.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { CiImageOff } from "react-icons/ci";
+import { AiOutlineLoading } from "react-icons/ai";
 
 const Detail = () => {
   const [randomBooks, setRandomBooks] = useState([]);
@@ -54,6 +55,18 @@ const Detail = () => {
     window.scrollTo(0, 0);
     fetchCurrentBook();
   }, [bookId]);
+
+  if (isLoading) {
+    return (
+      <div className={`${styles["loading"]} ${styles["fz-80"]}`}>
+        <AiOutlineLoading />
+      </div>
+    );
+  }
+
+  if (error) {
+    return <div className={styles["error"]}>{error.message}</div>;
+  }
 
   return (
     <div className={styles["container"]}>
