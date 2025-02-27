@@ -1,8 +1,8 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import BookList from "./BookList";
-import { AiOutlineLoading } from "react-icons/ai";
-import styles from "./BookController.module.css";
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import BookList from './BookList';
+import { AiOutlineLoading } from 'react-icons/ai';
+import styles from './BookController.module.css';
 
 const BookController = () => {
   const [books, setBooks] = useState([]);
@@ -11,10 +11,10 @@ const BookController = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const badgeColor = {
-    최상: "#3471F0",
-    상: "#6293E7",
-    중: "#738DB5",
-    하: "#6D7480",
+    최상: '#3471F0',
+    상: '#6293E7',
+    중: '#738DB5',
+    하: '#6D7480',
   };
 
   const NewlyAddedBooks = books.slice(books.length - 6);
@@ -27,7 +27,7 @@ const BookController = () => {
     setIsLoading(true);
 
     try {
-      const res = await axios.get("http://localhost:5981/display/all");
+      const res = await axios.get('http://localhost:5981/api/display/all');
       setBooks(res.data.content);
     } catch (error) {
       setError(error);
@@ -43,9 +43,9 @@ const BookController = () => {
   const totalPage = Math.ceil(books.length / 18);
 
   const handlePagination = (selectedButton) => {
-    if (selectedButton === "prev" && currentPage !== 1) {
+    if (selectedButton === 'prev' && currentPage !== 1) {
       setCurrentPage((prevCurrentPage) => prevCurrentPage - 1);
-    } else if (selectedButton === "next" && currentPage !== totalPage) {
+    } else if (selectedButton === 'next' && currentPage !== totalPage) {
       setCurrentPage((prevCurrentPage) => prevCurrentPage + 1);
     }
   };
@@ -56,21 +56,21 @@ const BookController = () => {
 
   if (isLoading) {
     return (
-      <div className={`${styles["container"]} ${styles["fz-80"]}`}>
+      <div className={`${styles['container']} ${styles['fz-80']}`}>
         <AiOutlineLoading />
       </div>
     );
   }
 
   if (error) {
-    return <div className={styles["container"]}>{error.message}</div>;
+    return <div className={styles['container']}>{error.message}</div>;
   }
 
   return (
     <>
-      <BookList title={"새로 등록된 도서"} books={NewlyAddedBooks} badgeColor={badgeColor} />
+      <BookList title={'새로 등록된 도서'} books={NewlyAddedBooks} badgeColor={badgeColor} />
       <BookList
-        title={"전체 도서"}
+        title={'전체 도서'}
         books={currentBooks}
         badgeColor={badgeColor}
         currentPage={currentPage}
