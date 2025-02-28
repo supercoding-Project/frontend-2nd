@@ -21,12 +21,17 @@ body {
         width: 15%;
       }
       input,
-      textarea {
+      textarea,
+      select {
         width: 75%;
         font-size: 1rem;
         padding: 1rem;
         border: 1px solid #ddd;
         font-size: 0.8rem;
+        color: #777;
+      }
+      option {
+        color: #000;
       }
       .bookImgLabel {
         background-color: #f5f5f5;
@@ -65,11 +70,12 @@ body {
   .addProductButton {
     display: flex;
     justify-content: end;
+    margin: 3rem;
     button {
       background-color: var(--color-main);
       color: #fff;
       font-weight: bold;
-      padding: 0.7rem 2rem;
+      padding: 0.7rem 3rem;
       font-size: 1.1rem;
       border-radius: 100px;
       border: 2px solid var(--color-main);

@@ -1,7 +1,93 @@
 .salesList {
   padding: 0 2rem 2rem;
-  span {
-    padding: 2rem;
-    color: #999;
+  .sale__header {
+    border-bottom: 1px solid #ddd;
+    padding: 1rem;
+  }
+  ul {
+    li {
+      .saleContainer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem;
+        border-bottom: 1px solid #ddd;
+        cursor: pointer;
+        &:hover {
+          background-color: #fafafa;
+        }
+        .sale__itemDetails {
+          display: flex;
+          gap: 1.5rem;
+          text-align: left;
+          .product__image {
+            img {
+              width: 120px;
+            }
+          }
+          .product__details {
+            .product__name {
+              font-weight: bold;
+              font-size: 1.1rem;
+              margin: 5px 0;
+            }
+            .product__info {
+              display: flex;
+              align-items: center;
+              gap: 0.5rem;
+              color: #999;
+              font-size: 0.9rem;
+              margin: 3px 0;
+              .product__author {
+              }
+              .product__publisher {
+              }
+              .product__date {
+              }
+            }
+            .product__price {
+              font-size: 0.9rem;
+              margin: 5px 0;
+
+              .product__priceValue {
+              }
+              .product__priceUnit {
+              }
+            }
+          }
+        }
+        .sale__itemState {
+          text-align: center;
+          width: 80px;
+          font-size: 0.8rem;
+          color: #fff;
+          font-weight: bold;
+          & > * {
+            padding: 0.3rem;
+          }
+          .state__soldOut {
+            background-color: #999;
+          }
+          .state__onSale {
+            background-color: var(--color-main);
+          }
+        }
+        .sale__itemBtn {
+        }
+      }
+      .additionalInfo {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        padding: 0 10px;
+        margin-top: 10px;
+        background-color: #f9f9f9;
+        border-radius: 5px;
+        &.active {
+          max-height: 200px;
+          padding: 10px;
+        }
+      }
+    }
   }
 }
