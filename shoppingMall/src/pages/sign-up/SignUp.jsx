@@ -20,12 +20,12 @@ const SignUp = () => {
         </div>
         <div className={styles["input-box"]}>
           <label>비밀번호</label>
-          <input type="text" placeholder="비밀번호를 입력해주세요." name="password" className={styles["active"]} />
+          <input type="password" placeholder="비밀번호를 입력해주세요." name="password" className={styles["active"]} />
         </div>
         <div className={styles["input-box"]}>
           <label>비밀번호 확인</label>
           <input
-            type="text"
+            type="password"
             placeholder="동일한 비밀번호를 입력해주세요."
             name="confirmPassword"
             className={styles["active"]}
