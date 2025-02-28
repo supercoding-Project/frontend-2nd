@@ -1,9 +1,21 @@
 import { Link } from "react-router-dom";
 import styles from "./SignUp.module.css";
+import { useState } from "react";
 
 const SignUp = () => {
+  const [profile, setProfile] = useState(null);
+
+  const handleImageUpload = (e) => {
+    setProfile(e.target.files[0]);
+  };
+
   const handleSignUp = (e) => {
     e.preventDefault();
+
+    const fromData = new FormData(e.target);
+    const data = Object.fromEntries(fromData.entries());
+    console.log(data);
+    console.log(profile);
   };
 
   return (
@@ -49,7 +61,7 @@ const SignUp = () => {
         </div>
         <div className={styles["input-box"]}>
           <label>프로필 사진</label>
-          <input type="file" className={styles["input-file"]} name="image" />
+          <input type="file" className={styles["input-file"]} onChange={handleImageUpload} />
         </div>
         <div className={styles["button-box"]}>
           <Link to={"/"}>
