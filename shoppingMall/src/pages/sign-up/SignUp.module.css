@@ -1,0 +1,104 @@
+.container {
+  background: #f9f9f9;
+  padding: 50px;
+}
+
+.sign-up-form {
+  width: 700px;
+  background: white;
+  box-shadow: 0 0 10px 2px #ececec;
+  margin: auto;
+  padding: 10px 30px 30px;
+}
+
+.sign-up-form h2 {
+  text-align: center;
+  border-bottom: 2px solid black;
+  padding-bottom: 30px;
+  margin-bottom: 40px;
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.input-box {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  padding: 0 60px;
+}
+
+.input-box label {
+  display: inline-block;
+  width: 25%;
+  font-size: 14px;
+}
+
+.input-box input {
+  width: 75%;
+  padding: 15px 10px;
+  outline: none;
+  border: 1px solid #e1e1e1;
+  box-sizing: border-box;
+}
+
+.active:hover,
+.active:focus {
+  border: 1px solid #3471f0;
+}
+
+.input-box select {
+  outline: none;
+  padding: 8px 10px;
+  border: 1px solid #e1e1e1;
+  color: #6a6a6a;
+}
+
+.input-box .input-file {
+  border: none;
+  padding: 0;
+}
+
+.input-box input[type="file" i]::-webkit-file-upload-button {
+  padding: 10px 20px;
+  margin-right: 20px;
+  border: none;
+  background: #565656;
+  color: white;
+  cursor: pointer;
+}
+
+.input-box input[type="file" i]::-webkit-file-upload-button:hover {
+  background: #1c1c1c;
+}
+
+.button-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 35px;
+}
+
+.button-box button {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 10px 100px;
+}
+
+.cancel-btn {
+  border: 1px solid black;
+}
+
+.cancel-btn:hover {
+  background: #f5f5f5;
+}
+
+.confirm-btn {
+  border: 1px solid #3471f0;
+  background: #3471f0;
+  color: white;
+}
+
+.confirm-btn:hover {
+  background: #234896;
+}
