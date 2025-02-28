@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+}
+
+.fz-80 {
+  font-size: 80px;
+}
+
+.fz-80 svg {
+  animation: loading 1s linear infinite reverse;
+}
+
+@keyframes loading {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
