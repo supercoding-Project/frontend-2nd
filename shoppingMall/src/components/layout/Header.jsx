@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 const Header = () => {
   const isAuth = useSelector((state) => state.auth.isAuthenticated);
   const email = localStorage.getItem("email");
-
+  const userName = localStorage.getItem("userName"); // userName 가져오기
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -19,6 +19,7 @@ const Header = () => {
     e.preventDefault();
     localStorage.removeItem("isAuthenticated");
     localStorage.removeItem("email");
+    localStorage.removeItem("userName");
     dispatch(authActions.logOut());
     navigate("/", { replace: false });
   };
@@ -28,7 +29,7 @@ const Header = () => {
         {isAuth ? (
           <div className={styles.section}>
             <Link to="/mypage" className={styles.LinkLogIn}>
-              UserName {email}
+              {userName} 님, 안녕하세요!
             </Link>
             <Link onClick={handleLogOut} className={styles.LinkSignUp}>
               로그아웃
