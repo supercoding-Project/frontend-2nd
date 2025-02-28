@@ -10,16 +10,17 @@ import AddProduct from "./pages/AddProduct/AddProduct";
 import SocialLoginCallback from "./components/login/SocialLoginCallback";
 import SignUp from "./pages/sign-up/SignUp";
 import Detail from "./pages/detail/Detail";
+import BookController from "./components/book/BookController";
 
 function App() {
   return (
     <Layout>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/books" element={<BookList />} />
+        <Route path="/bookList" element={<BookController />} />
         <Route path="/logIn" element={<Login />} />
-        <Route path="/oauth2/code/google" element={<SocialLoginCallback />} />
-        <Route path="/oauth2/code/kakao" element={<SocialLoginCallback />} />
+        {/* <Route path="/oauth2/code/google" element={<SocialLoginCallback />} />
+        <Route path="/oauth2/code/kakao" element={<SocialLoginCallback />} /> */}
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/order" element={<Order />} />
         <Route path="/addproduct" element={<AddProduct />} />
