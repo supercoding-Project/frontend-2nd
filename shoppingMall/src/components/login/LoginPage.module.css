@@ -99,44 +99,6 @@ h2 {
   text-decoration: underline;
 }
 
-/* 소셜 로그인 */
-.socialLogin {
-  margin-top: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.google,
-.kakao {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px;
-  font-size: 16px;
-  border-radius: 5px;
-  cursor: pointer;
-  border: none;
-}
-
-.google {
-  color: black;
-  gap: 16px;
-}
-
-.kakao {
-  background-color: #fee500;
-  color: #3c1e1e;
-  gap: 10px;
-}
-
-.google:hover {
-  background-color: lightgray;
-}
-
-.kakao:hover {
-  background-color: #fdd835;
-}
 .error {
   color: red;
   font-size: 12px;
