@@ -1,21 +1,46 @@
 import { Link } from "react-router-dom";
 import styles from "./SignUp.module.css";
-import { useState } from "react";
+import axios from "axios";
 
 const SignUp = () => {
-  const [profile, setProfile] = useState(null);
-
-  const handleImageUpload = (e) => {
-    setProfile(e.target.files[0]);
-  };
-
-  const handleSignUp = (e) => {
+  const handleSignUp = async (e) => {
     e.preventDefault();
 
-    const fromData = new FormData(e.target);
-    const data = Object.fromEntries(fromData.entries());
-    console.log(data);
-    console.log(profile);
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
+
+    if (data.password !== data.confirmPassword) {
+      alert("비밀번호가 일치하지 않습니다.");
+      return;
+    }
+
+    const userData = {
+      email: data.email,
+      password: data.password,
+      username: data.username,
+      address: data.address,
+      phone: data.phone,
+      gender: data.gender,
+    };
+
+    formData.append("dto", new Blob([JSON.stringify(userData)], { type: "application/json" }));
+
+    const file = formData.get("image");
+    if (file && file.size > 0) {
+      formData.append("image", file);
+    }
+
+    try {
+      const res = await axios.post("http://43.200.136.205:8080/api/signup", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      alert(`회원가입 성공!, ${data.username}님 환영합니다.`);
+    } catch (error) {
+      console.error("회원가입 실패:", error.response?.data || error.message);
+    }
   };
 
   return (
@@ -45,7 +70,12 @@ const SignUp = () => {
         </div>
         <div className={styles["input-box"]}>
           <label>휴대폰 번호</label>
-          <input type="text" placeholder="휴대폰 번호를 입력해주세요." name="phone" className={styles["active"]} />
+          <input
+            type="text"
+            placeholder="휴대폰 번호를 입력해주세요. (예 : 000-0000-0000)"
+            name="phone"
+            className={styles["active"]}
+          />
         </div>
         <div className={styles["input-box"]}>
           <label>주소</label>
@@ -54,14 +84,13 @@ const SignUp = () => {
         <div className={styles["input-box"]}>
           <label>성별</label>
           <select name="gender" className={styles["active"]}>
-            <option hidden>성별을 선택해주세요.</option>
-            <option value={"남"}>남</option>
-            <option value={"여"}>여</option>
+            <option>남</option>
+            <option>여</option>
           </select>
         </div>
         <div className={styles["input-box"]}>
           <label>프로필 사진</label>
-          <input type="file" className={styles["input-file"]} onChange={handleImageUpload} />
+          <input type="file" className={styles["input-file"]} name="image" />
         </div>
         <div className={styles["button-box"]}>
           <Link to={"/"}>
