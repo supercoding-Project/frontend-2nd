@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import style from "./SalesList.module.css";
 import axios from "axios";
 
-const API_URL = "https://43.200.136.205:8080/api/v1/product/myproductlist";
+const API_URL = "http://43.200.136.205:8080/api/v1/product/myproductlist";
 
 const SalesList = () => {
   const [activeItem, setActiveItem] = useState(null); // 클릭된 항목을 추적하는 상태

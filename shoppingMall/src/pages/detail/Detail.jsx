@@ -29,7 +29,7 @@ const Detail = () => {
 
       try {
         const res = await axios.get(
-          "https://43.200.136.205:8080/api/display/all"
+          "http://43.200.136.205:8080/api/display/all"
         );
         const books = res.data.content
           .sort(() => Math.random() - 0.5)
@@ -51,7 +51,7 @@ const Detail = () => {
 
       try {
         const res = await axios.get(
-          `https://43.200.136.205:8080/api/display/${bookId}`
+          `http://43.200.136.205:8080/api/display/${bookId}`
         );
         setCurrentBook(res.data);
       } catch (error) {
