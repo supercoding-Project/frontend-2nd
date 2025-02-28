@@ -44,14 +44,16 @@ const CartList = ({ cart, setCart, isOrderPage }) => {
                   />
                 </div>
                 <div className={style.product__details}>
-                  <div className={style.product__name}>도서이름</div>
+                  <div className={style.product__name}>{item.title}</div>
                   <div className={style.product__info}>
                     <div className={style.product__author}>000 지음</div>/
                     <div className={style.product__publisher}>출판사</div>/
                     <div className={style.product__date}>2000.01</div>
                   </div>
                   <div className={style.product__price}>
-                    <span className={style.product__priceValue}>15,000</span>
+                    <span className={style.product__priceValue}>
+                      {item.salePrice}
+                    </span>
                     <span className={style.product__priceUnit}>원</span>
                   </div>
                 </div>
