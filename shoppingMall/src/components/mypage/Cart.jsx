@@ -9,7 +9,7 @@ const Cart = () => {
   const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const accessToken = localStorage.getItem("accessToken");
+  const accessToken = localStorage.getItem("token");
   const email = localStorage.getItem("email");
 
   useEffect(() => {

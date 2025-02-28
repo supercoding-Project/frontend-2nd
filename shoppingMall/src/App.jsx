@@ -5,6 +5,7 @@ import Home from "./pages/Home/Home";
 import BookList from "./pages/BookList";
 import Login from "./pages/login/Login";
 import MyPage from "./pages/MyPage/MyPage";
+import CartPage from "./pages/MyPage/CartPage";
 import Order from "./pages/Order/Order";
 import AddProduct from "./pages/AddProduct/AddProduct";
 import SocialLoginCallback from "./components/login/SocialLoginCallback";
