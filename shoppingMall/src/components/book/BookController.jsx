@@ -27,7 +27,7 @@ const BookController = () => {
     setIsLoading(true);
 
     try {
-      const res = await axios.get("http://43.200.136.205:8080/api/display/all");
+      const res = await axios.get("/api/display/all");
       setBooks(res.data.content);
     } catch (error) {
       setError(error);
