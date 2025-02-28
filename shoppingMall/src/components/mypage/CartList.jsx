@@ -1,143 +1,84 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useDispatch } from "react-redux";
+import { updateCartItem, removeCartItem } from "../../store/cartSlice";
 import style from "./CartList.module.css";
 
-const CartList = ({ isOrderPage, setCart, cart, books }) => {
-  console.log(cart, books);
+const CartList = ({ cart, setCart }) => {
+  const dispatch = useDispatch();
+
+  const handleQuantityChange = (productId, newQuantity) => {
+    setCart((prevCart) =>
+      prevCart.map((item) =>
+        item.productId === productId ? { ...item, quantity: newQuantity } : item
+      )
+    );
+    dispatch(updateCartItem({ productId, quantity: newQuantity }));
+  };
+
+  const handleRemove = (productId) => {
+    setCart((prevCart) =>
+      prevCart.filter((item) => item.productId !== productId)
+    );
+    dispatch(removeCartItem(productId));
+  };
 
   return (
     <div className={style.cart__list}>
-      {books.length === 0 ? (
-        <p>장바구니에 넣은 상품이 없습니다.</p> // 책이 없으면 이 메시지 표시
+      {cart.length === 0 ? (
+        <p>장바구니에 상품이 없습니다.</p>
       ) : (
         <ul>
-          {books.map((book) => {
-            const cartItem = cart.find((b) => b.productId === book.productId);
-            if (!cartItem) return null;
-
-            const [cartQuantity, setCartQuantity] = useState(cartItem.quantity);
-            const [cartPrice, setCartPrice] = useState(
-              Number(book.salePrice) * cartQuantity
-            );
-
-            useEffect(() => {
-              setCartPrice(Number(book.salePrice) * cartQuantity);
-            }, [cartQuantity, book.salePrice]);
-
-            const handleRemove = (productId) => {
-              setCart((prevCart) =>
-                prevCart.filter((item) => item.productId !== productId)
-              );
-              console.log(productId); // 삭제된 productId 확인용
-            };
-
-            const handleQuantityChange = (productId, newQuantity) => {
-              setCart((prevCart) =>
-                prevCart.map((item) =>
-                  item.productId === productId
-                    ? { ...item, quantity: newQuantity }
-                    : item
-                )
-              );
-              setCartQuantity(newQuantity); // 수량도 상태로 업데이트
-            };
-
-            // useEffect(() => {
-            //   console.log(cart); // cart가 변경될 때마다 출력
-            // }, [cart]);
-
-            return (
-              <li key={book.id} className={style.cart__item}>
-                <div
-                  className={`${style.cart__itemDetails} ${
-                    isOrderPage
-                      ? style.orderModeItemDetails
-                      : style.defaultModeItemDetails
-                  }`}
-                >
-                  <div className={style.product__image}>
-                    <img src="https://placehold.co/250x300" alt="상품 이미지" />
+          {cart.map((item) => (
+            <li key={item.productId} className={style.cart__item}>
+              <div className={style.product__details}>
+                <img
+                  src={item.imageUrl || "https://placehold.co/250x300"}
+                  alt="상품 이미지"
+                  className={style.product__image}
+                />
+                <div className={style.product__info}>
+                  <div className={style.product__name}>{item.title}</div>
+                  <div className={style.product__author}>
+                    {item.author} 지음
                   </div>
-                  <div className={style.product__details}>
-                    <div className={style.product__name}>{book.title}</div>
-                    <div className={style.product__info}>
-                      <div className={style.product__author}>
-                        {book.author}
-                        <span> 지음</span>
-                      </div>
-                      /
-                      <div className={style.product__publisher}>
-                        {book.publisher}
-                      </div>
-                      /<div className={style.product__date}>{book.date}</div>
-                    </div>
-                    <div className={style.product__price}>
-                      <span className={style.product__priceValue}>
-                        {Number(book.salePrice).toLocaleString()}
-                      </span>
-                      <span className={style.product__priceUnit}>원</span>
-                    </div>
+                  <div className={style.product__publisher}>
+                    {item.publisher}
+                  </div>
+                  <div className={style.product__price}>
+                    {Number(item.salePrice).toLocaleString()} 원
                   </div>
                 </div>
-                <div
-                  className={`${style.cart__control} ${
-                    isOrderPage
-                      ? style.orderModeControl
-                      : style.defaultModeControl
-                  }`}
+              </div>
+              <div className={style.cart__control}>
+                <button
+                  className={style.cart__quantityButton}
+                  onClick={() =>
+                    handleQuantityChange(
+                      item.productId,
+                      Math.max(item.quantity - 1, 1)
+                    )
+                  }
                 >
-                  <div className={style.cart__quantity}>
-                    <button
-                      className={` 
-                      ${style["cart__quantity-button"]} 
-                      ${style["cart__quantity-button--decrease"]}
-                    `}
-                      onClick={() =>
-                        handleQuantityChange(
-                          cartItem.productId,
-                          Math.max(cartQuantity - 1, 1)
-                        )
-                      }
-                    >
-                      -
-                    </button>
-                    <span className={style.cart__count}>{cartQuantity}</span>
-                    <button
-                      className={` 
-                      ${style["cart__quantity-button"]} 
-                      ${style["cart__quantity-button--increase"]}
-                    `}
-                      onClick={() =>
-                        handleQuantityChange(
-                          cartItem.productId,
-                          cartQuantity + 1
-                        )
-                      }
-                    >
-                      +
-                    </button>
-                  </div>
-                </div>
-                <div
-                  className={`${style.cart__price} ${
-                    isOrderPage ? style.orderModePrice : style.defaultModePrice
-                  }`}
+                  -
+                </button>
+                <span className={style.cart__count}>{item.quantity}</span>
+                <button
+                  className={style.cart__quantityButton}
+                  onClick={() =>
+                    handleQuantityChange(item.productId, item.quantity + 1)
+                  }
                 >
-                  {cartPrice.toLocaleString()}
-                </div>
-                <div
-                  className={`${style.cart__cancel} ${
-                    isOrderPage
-                      ? style.orderModeCancel
-                      : style.defaultModeCancel
-                  }`}
-                >
-                  <button onClick={() => handleRemove(book.productId)}>
-                    X
-                  </button>
-                </div>
-              </li>
-            );
-          })}
+                  +
+                </button>
+              </div>
+              <div className={style.cart__price}>
+                {(item.salePrice * item.quantity).toLocaleString()} 원
+              </div>
+              <div className={style.cart__cancel}>
+                <button onClick={() => handleRemove(item.productId)}>X</button>
+              </div>
+            </li>
+          ))}
         </ul>
       )}
     </div>
