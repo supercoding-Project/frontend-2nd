@@ -1,6 +1,5 @@
 import { React, useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { RiGoogleFill, RiKakaoTalkFill } from "react-icons/ri";
 import ScrollTopButton from "../common/ScrollTopButton";
 import { AiFillEye } from "react-icons/ai";
 import { AiFillEyeInvisible } from "react-icons/ai";
@@ -9,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { authActions } from "../../store";
 import { useNavigate } from "react-router-dom";
 import { logIn } from "../../API/AuthService";
+import SocialLogin from "./SocialLogin";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -53,12 +53,17 @@ const LoginPage = () => {
 
     try {
       const response = await logIn(enteredEmail, enteredPassword);
+      console.log("login Success", response);
       dispatch(authActions.logIn());
       setEnteredEmail("");
       setEnteredPassword("");
+      localStorage.setItem("email", response.email);
+      localStorage.setItem("userName", response.username);
+      localStorage.setItem("isAuthenticated", "true");
       navigate("/", { replace: false });
     } catch (error) {
-      alert(error.message);
+      console.error("login fail", error.message);
+      alert(error.message || "Please check your account");
     }
     // console.log("submit success");
     // setEnteredEmailIsValid(true);
@@ -142,14 +147,15 @@ const LoginPage = () => {
             </button>
           </div>
         </form>
-        <div className={styles.socialLogin}>
-          <button className={styles.google}>
+        {/* <div className={styles.socialLogin}>
+          <button className={styles.google} onClick={handleGoogleLogin}>
             <RiGoogleFill size={24} /> 구글 로그인
           </button>
-          <button className={styles.kakao}>
+          <button className={styles.kakao} onClick={handleKakaoLogin}>
             <RiKakaoTalkFill size={24} /> 카카오 로그인
           </button>
-        </div>
+        </div> */}
+        <SocialLogin />
         <div className={styles.links}>
           <Link to="/signup">회원가입</Link>
           <Link to="/find-password">아이디 찾기</Link>

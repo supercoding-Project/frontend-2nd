@@ -7,6 +7,7 @@ import Login from "./pages/login/Login";
 import MyPage from "./pages/MyPage/MyPage";
 import Order from "./pages/Order/Order";
 import AddProduct from "./pages/AddProduct/AddProduct";
+import SocialLoginCallback from "./components/login/SocialLoginCallback";
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/books" element={<BookList />} />
         <Route path="/logIn" element={<Login />} />
+        <Route path="/oauth2/code/google" element={<SocialLoginCallback />} />
+        <Route path="/oauth2/code/kakao" element={<SocialLoginCallback />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/order" element={<Order />} />
         <Route path="/addproduct" element={<AddProduct />} />
