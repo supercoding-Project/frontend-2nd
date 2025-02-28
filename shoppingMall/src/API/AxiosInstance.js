@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080"; // API 기본 URL
+const API_URL = "https://localhost:8080"; // API 기본 URL
 
 const axiosInstance = axios.create({
   baseURL: API_URL,

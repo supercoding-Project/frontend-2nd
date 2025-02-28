@@ -77,8 +77,8 @@ const Header = () => {
           <Link to="/category/price" className={styles.LinkLogIn}>
             상태별 코너
           </Link>
-          <Link to="/category/event" className={styles.LinkLogIn}>
-            이벤트
+          <Link to="/addProduct" className={styles.LinkLogIn}>
+            상품등록
           </Link>
           <Link to="/category/myBookStore" className={styles.LinkLogIn}>
             나의 서점

@@ -28,8 +28,12 @@ const Detail = () => {
       setIsLoading(true);
 
       try {
-        const res = await axios.get("http://43.200.136.205:8080/api/display/all");
-        const books = res.data.content.sort(() => Math.random() - 0.5).slice(0, 6);
+        const res = await axios.get(
+          "https://43.200.136.205:8080/api/display/all"
+        );
+        const books = res.data.content
+          .sort(() => Math.random() - 0.5)
+          .slice(0, 6);
         setRandomBooks(books);
       } catch (error) {
         setError(error);
@@ -46,7 +50,9 @@ const Detail = () => {
       setIsLoading(true);
 
       try {
-        const res = await axios.get(`http://43.200.136.205:8080/api/display/${bookId}`);
+        const res = await axios.get(
+          `https://43.200.136.205:8080/api/display/${bookId}`
+        );
         setCurrentBook(res.data);
       } catch (error) {
         setError(error);
@@ -88,7 +94,10 @@ const Detail = () => {
   return (
     <div className={styles["container"]}>
       <div>
-        <span className={styles["badge"]} style={{ background: `${badgeColor[currentBook.status]}` }}>
+        <span
+          className={styles["badge"]}
+          style={{ background: `${badgeColor[currentBook.status]}` }}
+        >
           {currentBook.status}급
         </span>
         <h4 className={styles["title"]}>{currentBook.title}</h4>
@@ -99,7 +108,9 @@ const Detail = () => {
           <span>|</span>
           <p>출간일 {new Date(currentBook.publishDate).toLocaleDateString()}</p>
           <span>|</span>
-          <p>상품등록일 {new Date(currentBook.createdAt).toLocaleDateString()}</p>
+          <p>
+            상품등록일 {new Date(currentBook.createdAt).toLocaleDateString()}
+          </p>
         </div>
       </div>
       <div className={styles["card-detail"]}>
@@ -135,8 +146,18 @@ const Detail = () => {
             <Link to={`/detail/${item.productId}`} key={item.productId}>
               <li className={styles["random-book"]}>
                 <div>
-                  <span style={{ background: badgeColor[item.status] }}>{item.status}급</span>
-                  {item.imageUrl ? <img src={item.imageUrl} alt={item.title} draggable="false" /> : <CiImageOff />}
+                  <span style={{ background: badgeColor[item.status] }}>
+                    {item.status}급
+                  </span>
+                  {item.imageUrl ? (
+                    <img
+                      src={item.imageUrl}
+                      alt={item.title}
+                      draggable="false"
+                    />
+                  ) : (
+                    <CiImageOff />
+                  )}
                 </div>
                 <h4>{item.title}</h4>
                 <p>{item.author}</p>

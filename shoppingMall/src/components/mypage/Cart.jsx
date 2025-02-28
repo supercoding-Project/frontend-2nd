@@ -25,7 +25,7 @@ const Cart = () => {
   const fetchCartData = async () => {
     try {
       const response = await axios.get(
-        `http://43.200.136.205:8080/api/v1/mypage/${email}/cart`,
+        `https://43.200.136.205:8080/api/v1/mypage/${email}/cart`,
         {
           headers: { Authorization: `Bearer ${accessToken}` },
         }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { jwtDecode } from "jwt-decode";
+//import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import style from "./MyPage.module.css";
 import UserInfo from "../../components/mypage/UserInfo";
@@ -32,7 +32,7 @@ const MyPage = () => {
 
     try {
       const response = await axios.get(
-        `http://43.200.136.205:8080/api/v1/mypage/${email}`, // ✅ email 기반 API 요청
+        `https://43.200.136.205:8080/api/v1/mypage/${email}`, // ✅ email 기반 API 요청
         {
           headers: { Authorization: `Bearer ${token}` },
         }

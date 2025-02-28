@@ -27,7 +27,9 @@ const BookController = () => {
     setIsLoading(true);
 
     try {
-      const res = await axios.get("http://43.200.136.205:8080/api/display/all");
+      const res = await axios.get(
+        "https://43.200.136.205:8080/api/display/all"
+      );
       setBooks(res.data.content);
     } catch (error) {
       setError(error);
@@ -68,7 +70,11 @@ const BookController = () => {
 
   return (
     <>
-      <BookList title={"새로 등록된 도서"} books={NewlyAddedBooks} badgeColor={badgeColor} />
+      <BookList
+        title={"새로 등록된 도서"}
+        books={NewlyAddedBooks}
+        badgeColor={badgeColor}
+      />
       <BookList
         title={"전체 도서"}
         books={currentBooks}
