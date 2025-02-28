@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import style from "./Order.module.css";
 import CartList from "../../components/mypage/CartList";
 import CartTotal from "../../components/mypage/CartTotal";
 
 const Order = () => {
+  const [cart, setCart] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [formData, setFormData] = useState({
     name: "",
     postalCode: "",
@@ -18,8 +22,39 @@ const Order = () => {
     cardCVC: "",
     orderAgree: false,
   });
-
   const [errors, setErrors] = useState({});
+
+  const accessToken = localStorage.getItem("token");
+  const email = localStorage.getItem("email");
+
+  useEffect(() => {
+    if (!email) {
+      setError("이메일 정보가 없습니다.");
+      setLoading(false);
+      return;
+    }
+    fetchCartData();
+  }, [email]);
+
+  const fetchCartData = async () => {
+    try {
+      const response = await axios.get(
+        `http://43.200.136.205:8080/api/v1/mypage/${email}/cart`,
+        {
+          headers: { Authorization: `Bearer ${accessToken}` },
+        }
+      );
+      setCart(response.data);
+    } catch (err) {
+      console.error("장바구니 데이터 로딩 오류:", err);
+      setError("장바구니 정보를 불러오지 못했습니다.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) return <div>로딩 중...</div>;
+  if (error) return <div>{error}</div>;
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -87,11 +122,15 @@ const Order = () => {
 
   return (
     <div className={style.order}>
+      <div className={style.orderCart}>
+        <CartList cart={cart} isOrderPage={true} />
+        <CartTotal cart={cart} />
+      </div>
       <div className={style.orderContainer}>
         <div className={style.orderUser}>
-          <h3>수령인 정보</h3>
+          <h3>배송 정보</h3>
           <div className={style.orderUserRow}>
-            <label htmlFor="name">수령인</label>
+            <label htmlFor="name">받으시는 분</label>
             <input
               type="text"
               name="name"
@@ -103,41 +142,6 @@ const Order = () => {
             />
             {errors.name && (
               <span className={style.errorMessage}>이름을 입력하세요.</span>
-            )}
-          </div>
-          <div className={style.orderUserRow}>
-            <label htmlFor="postalCode">주소</label>
-            <div className={style.inputs}>
-              <input
-                type="number"
-                name="postalCode"
-                id="postalCode"
-                placeholder="우편번호"
-                className={errors.postalCode ? style.errorInput : ""}
-                value={formData.postalCode}
-                onChange={handleChange}
-              />
-              <input
-                type="text"
-                name="address1"
-                id="address1"
-                placeholder="주소지"
-                className={errors.address1 ? style.errorInput : ""}
-                value={formData.address1}
-                onChange={handleChange}
-              />
-            </div>
-            <input
-              type="text"
-              name="address2"
-              id="address2"
-              placeholder="상세주소"
-              className={errors.address2 ? style.errorInput : ""}
-              value={formData.address2}
-              onChange={handleChange}
-            />
-            {errors.address && (
-              <span className={style.errorMessage}>주소를 입력하세요.</span>
             )}
           </div>
           <div className={style.orderUserRow}>
@@ -155,17 +159,20 @@ const Order = () => {
               <span className={style.errorMessage}>이메일을 입력하세요.</span>
             )}
           </div>
-          <div className={style.orderUserEmailAgree}>
+          <div className={style.orderUserRow}>
+            <label htmlFor="address">주소</label>
             <input
-              type="checkbox"
-              name="emailAgree"
-              id="emailAgree"
-              checked={formData.emailAgree}
+              type="number"
+              name="address"
+              id="address"
+              placeholder="주소를 입력해주세요."
+              className={errors.postalCode ? style.errorInput : ""}
+              value={formData.postalCode}
               onChange={handleChange}
             />
-            <label htmlFor="emailAgree">
-              결제와 관련된 정보를 이메일로 받겠습니다.
-            </label>
+            {errors.address && (
+              <span className={style.errorMessage}>주소를 입력하세요.</span>
+            )}
           </div>
         </div>
 
@@ -265,7 +272,6 @@ const Order = () => {
             </div>
           </div>
         </div>
-
         <div className={style.orderAgree}>
           <input
             type="checkbox"
@@ -280,10 +286,6 @@ const Order = () => {
         <div className={style.orderButton}>
           <button onClick={btnOrderClick}>결제하기</button>
         </div>
-      </div>
-      <div className={style.orderCart}>
-        <CartList isOrderPage={true} />
-        <CartTotal />
       </div>
     </div>
   );

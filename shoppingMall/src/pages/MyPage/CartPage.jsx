@@ -12,7 +12,7 @@ const MyPage = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [activeTab, setActiveTab] = useState("userInfo");
+  const [activeTab, setActiveTab] = useState("cart");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,15 +21,14 @@ const MyPage = () => {
     if (!token || !email) {
       setError("로그인이 필요합니다.");
       setLoading(false);
-      navigate("/login");
       return;
     }
     fetchUserData(token, email);
   }, []);
 
   const fetchUserData = async (token, email) => {
-    // console.log("사용할 이메일:", email);
-    // console.log("사용할 토큰:", token);
+    console.log("사용할 이메일:", email);
+    console.log("사용할 토큰:", token);
 
     try {
       const response = await axios.get(

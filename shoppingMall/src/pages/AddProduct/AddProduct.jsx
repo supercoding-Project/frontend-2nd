@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import style from "./AddProduct.module.css";
+import axios from "axios";
+
+const API_URL = "/api/v1/product";
 
 const AddProduct = () => {
   const [category, setCategory] = useState("");
@@ -41,7 +44,7 @@ const AddProduct = () => {
     }
   };
 
-  const btnAddClick = () => {
+  const btnAddClick = async () => {
     const newErrors = {
       categories: category.trim() === "",
       name: name.trim() === "",
@@ -58,12 +61,35 @@ const AddProduct = () => {
 
     setErrors(newErrors);
 
-    // 오류가 있으면 메시지를 표시
     if (Object.values(newErrors).some((error) => error)) {
-      // 에러 메시지 출력
-    } else {
+      alert("입력되지 않은 항목이 있습니다.");
+      return;
+    }
+
+    // 보낼 데이터 객체
+    const formData = new FormData();
+    formData.append("category", category);
+    formData.append("name", name);
+    formData.append("img", img); // 이미지 파일 포함
+    formData.append("condition", condition);
+    formData.append("author", author);
+    formData.append("publisher", publisher);
+    formData.append("date", date);
+    formData.append("originalPrice", originalPrice);
+    formData.append("salePrice", salePrice);
+    formData.append("quantity", quantity);
+    formData.append("description", description);
+
+    try {
+      const response = await axios.post("#", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
       alert("상품이 등록되었습니다!");
-      // 상품 등록 로직
+    } catch (error) {
+      console.error("상품 등록 실패:", error);
+      alert("상품 등록에 실패했습니다.");
     }
   };
 
@@ -158,8 +184,10 @@ const AddProduct = () => {
             onChange={(e) => setCondition(e.target.value)}
           >
             <option value="">상태를 선택하세요</option>
-            <option value="new">새 책</option>
-            <option value="used">중고 책</option>
+            <option value="mint">최상급</option>
+            <option value="excellent">상급</option>
+            <option value="good">중급</option>
+            <option value="fair">하급</option>
           </select>
           {errors.condition && (
             <span className={style.errorMessage}>도서 상태를 선택하세요.</span>
@@ -277,7 +305,7 @@ const AddProduct = () => {
             type="number"
             name="bookQuantity"
             id="bookQuantity"
-            placeholder="수량를 입력해주세요"
+            placeholder="수량을 입력해주세요"
             className={`${style.bookQuantityInput} ${
               errors.quantity ? style.errorInput : ""
             }`}
@@ -299,6 +327,7 @@ const AddProduct = () => {
           <textarea
             id="description"
             placeholder="설명을 입력해주세요"
+            rows={7}
             className={`${style.bookDescriptionInput} ${
               errors.description ? style.errorInput : ""
             }`}

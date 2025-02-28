@@ -1,4 +1,5 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
+import cartReducer from "./cartSlice";
 
 const initialAuthState = {
   isAuthenticated: localStorage.getItem("isAuthenticated") === "true",
@@ -10,7 +11,7 @@ const authSlice = createSlice({
   reducers: {
     logIn(state) {
       state.isAuthenticated = true;
-      localStorage.setItem("isAuthenticated", true);
+      localStorage.setItem("isAuthenticated", "true");
     },
 
     logOut(state) {
@@ -21,7 +22,10 @@ const authSlice = createSlice({
 });
 
 const store = configureStore({
-  reducer: { auth: authSlice.reducer },
+  reducer: {
+    auth: authSlice.reducer,
+    cart: cartReducer,
+  },
 });
 
 export default store;
