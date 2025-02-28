@@ -9,7 +9,7 @@
 
 /* 로그인 박스 */
 .loginBox {
-  width: 400px;
+  width: 350px;
   padding: 30px;
   background: white;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -26,7 +26,7 @@ h2 {
 
 /* 입력 필드 */
 .input {
-  width: 95%;
+  width: 300px;
   padding: 12px;
   margin: 10px 0;
   border: 1px solid #ddd;
@@ -35,7 +35,7 @@ h2 {
 }
 
 .inputError {
-  width: 95%;
+  width: 300px;
   padding: 12px;
   margin: 10px 0;
   background-color: #fbe8d2;
@@ -46,7 +46,7 @@ h2 {
 
 /* 로그인 버튼 */
 .loginButton {
-  width: 100%;
+  width: 350px;
   padding: 12px;
   background-color: #007bff;
   color: white;
@@ -62,12 +62,16 @@ h2 {
 
 .passwordWrapper {
   position: relative;
-  width: 100%;
+  width: 350px;
 }
 
 .passwordWrapper .input {
-  width: 95%;
-  padding-right: 40px;
+  width: 300px;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
 }
 
 .eye {

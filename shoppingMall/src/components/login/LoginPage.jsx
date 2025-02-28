@@ -147,14 +147,6 @@ const LoginPage = () => {
             </button>
           </div>
         </form>
-        {/* <div className={styles.socialLogin}>
-          <button className={styles.google} onClick={handleGoogleLogin}>
-            <RiGoogleFill size={24} /> 구글 로그인
-          </button>
-          <button className={styles.kakao} onClick={handleKakaoLogin}>
-            <RiKakaoTalkFill size={24} /> 카카오 로그인
-          </button>
-        </div> */}
         <SocialLogin />
         <div className={styles.links}>
           <Link to="/signup">회원가입</Link>
