@@ -38,12 +38,9 @@ const Order = () => {
 
   const fetchCartData = async () => {
     try {
-      const response = await axios.get(
-        `http://43.200.136.205:8080/api/v1/mypage/${email}/cart`,
-        {
-          headers: { Authorization: `Bearer ${accessToken}` },
-        }
-      );
+      const response = await axios.get(`/api/v1/mypage/${email}/cart`, {
+        headers: { Authorization: `Bearer ${accessToken}` },
+      });
       setCart(response.data);
     } catch (err) {
       console.error("장바구니 데이터 로딩 오류:", err);

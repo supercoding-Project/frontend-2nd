@@ -28,9 +28,7 @@ const Detail = () => {
       setIsLoading(true);
 
       try {
-        const res = await axios.get(
-          "http://43.200.136.205:8080/api/display/all"
-        );
+        const res = await axios.get("/api/display/all");
         const books = res.data.content
           .sort(() => Math.random() - 0.5)
           .slice(0, 6);
@@ -50,9 +48,7 @@ const Detail = () => {
       setIsLoading(true);
 
       try {
-        const res = await axios.get(
-          `http://43.200.136.205:8080/api/display/${bookId}`
-        );
+        const res = await axios.get(`/api/display/${bookId}`);
         setCurrentBook(res.data);
       } catch (error) {
         setError(error);

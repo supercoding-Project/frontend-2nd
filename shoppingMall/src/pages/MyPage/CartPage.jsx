@@ -32,7 +32,7 @@ const MyPage = () => {
 
     try {
       const response = await axios.get(
-        `http://43.200.136.205:8080/api/v1/mypage/${email}`, // ✅ email 기반 API 요청
+        `/api/v1/mypage/${email}`, // ✅ email 기반 API 요청
         {
           headers: { Authorization: `Bearer ${token}` },
         }

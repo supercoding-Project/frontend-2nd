@@ -25,7 +25,7 @@ const SocialLoginCallback = () => {
 
             // 백엔드로 로그인 인증 코드 전송
             const response = await axios.post(
-              `http://43.200.136.205:8080/oauth2/authorization/${platform}`,
+              `/oauth2/authorization/${platform}`,
               {
                 platform, // kakao or google
                 code, // 인증 코드

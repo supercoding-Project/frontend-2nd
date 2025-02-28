@@ -1,11 +1,11 @@
 import axios from "axios";
 
-const API_URL = "http://43.200.136.205:8080";
+//const API_URL = "http://43.200.136.205:8080";
 
 export const logIn = async (email, password) => {
   try {
     // 실제 로그인 API 요청 보내기
-    const response = await axios.post(`${API_URL}/api/login`, {
+    const response = await axios.post("/api/login", {
       email: email,
       password: password,
     });
