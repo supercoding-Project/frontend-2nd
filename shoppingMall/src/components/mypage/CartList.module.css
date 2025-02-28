@@ -8,16 +8,18 @@
       border-bottom: 1px solid #ddd;
       .cart__itemDetails {
         display: flex;
-        gap: 1rem;
+        gap: 1.5rem;
         text-align: left;
         .product__image {
-          border: 1px solid #ddd;
           img {
+            width: 120px;
           }
         }
         .product__details {
           .product__name {
             font-weight: bold;
+            font-size: 1.1rem;
+            margin: 5px 0;
           }
           .product__info {
             display: flex;
@@ -25,6 +27,7 @@
             gap: 0.5rem;
             color: #999;
             font-size: 0.9rem;
+            margin: 3px 0;
             .product__author {
             }
             .product__publisher {
@@ -34,6 +37,7 @@
           }
           .product__price {
             font-size: 0.9rem;
+            margin: 5px 0;
 
             .product__priceValue {
             }

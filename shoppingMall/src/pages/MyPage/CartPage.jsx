@@ -12,7 +12,7 @@ const MyPage = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [activeTab, setActiveTab] = useState("userInfo");
+  const [activeTab, setActiveTab] = useState("cart");
   const navigate = useNavigate();
 
   useEffect(() => {

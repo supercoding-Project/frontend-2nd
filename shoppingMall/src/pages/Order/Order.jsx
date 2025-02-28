@@ -87,11 +87,15 @@ const Order = () => {
 
   return (
     <div className={style.order}>
+      <div className={style.orderCart}>
+        <CartList isOrderPage={true} />
+        <CartTotal />
+      </div>
       <div className={style.orderContainer}>
         <div className={style.orderUser}>
-          <h3>수령인 정보</h3>
+          <h3>배송 정보</h3>
           <div className={style.orderUserRow}>
-            <label htmlFor="name">수령인</label>
+            <label htmlFor="name">받으시는 분</label>
             <input
               type="text"
               name="name"
@@ -103,6 +107,21 @@ const Order = () => {
             />
             {errors.name && (
               <span className={style.errorMessage}>이름을 입력하세요.</span>
+            )}
+          </div>
+          <div className={style.orderUserRow}>
+            <label htmlFor="email">이메일</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="이메일을 입력해주세요."
+              className={errors.email ? style.errorInput : ""}
+              value={formData.email}
+              onChange={handleChange}
+            />
+            {errors.email && (
+              <span className={style.errorMessage}>이메일을 입력하세요.</span>
             )}
           </div>
           <div className={style.orderUserRow}>
@@ -139,33 +158,6 @@ const Order = () => {
             {errors.address && (
               <span className={style.errorMessage}>주소를 입력하세요.</span>
             )}
-          </div>
-          <div className={style.orderUserRow}>
-            <label htmlFor="email">이메일</label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              placeholder="이메일을 입력해주세요."
-              className={errors.email ? style.errorInput : ""}
-              value={formData.email}
-              onChange={handleChange}
-            />
-            {errors.email && (
-              <span className={style.errorMessage}>이메일을 입력하세요.</span>
-            )}
-          </div>
-          <div className={style.orderUserEmailAgree}>
-            <input
-              type="checkbox"
-              name="emailAgree"
-              id="emailAgree"
-              checked={formData.emailAgree}
-              onChange={handleChange}
-            />
-            <label htmlFor="emailAgree">
-              결제와 관련된 정보를 이메일로 받겠습니다.
-            </label>
           </div>
         </div>
 
@@ -265,7 +257,6 @@ const Order = () => {
             </div>
           </div>
         </div>
-
         <div className={style.orderAgree}>
           <input
             type="checkbox"
@@ -280,10 +271,6 @@ const Order = () => {
         <div className={style.orderButton}>
           <button onClick={btnOrderClick}>결제하기</button>
         </div>
-      </div>
-      <div className={style.orderCart}>
-        <CartList isOrderPage={true} />
-        <CartTotal />
       </div>
     </div>
   );
