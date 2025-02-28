@@ -7,13 +7,12 @@ import styles from "./LoginPage.module.css";
 import { useDispatch } from "react-redux";
 import { authActions } from "../../store";
 import { useNavigate } from "react-router-dom";
-import { loginWithFakeJWT, logIn } from "../../API/AuthService";
+import { logIn } from "../../API/AuthService";
 import SocialLogin from "./SocialLogin";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const fakeLogIn = loginWithFakeJWT(true);
 
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
@@ -55,15 +54,11 @@ const LoginPage = () => {
     try {
       const response = await logIn(enteredEmail, enteredPassword);
       console.log("login Success", response);
-      alert("login success");
       dispatch(authActions.logIn());
       setEnteredEmail("");
       setEnteredPassword("");
       localStorage.setItem("email", response.email);
-      localStorage.setItem("userName", response.userName);
-      /////
-      localStorage.setItem("token", user.token);
-      /////
+      localStorage.setItem("userName", response.username);
       localStorage.setItem("isAuthenticated", "true");
       navigate("/", { replace: false });
     } catch (error) {

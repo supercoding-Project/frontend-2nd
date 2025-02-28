@@ -16,11 +16,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/books" element={<BookList />} />
         <Route path="/logIn" element={<Login />} />
-        <Route
-          path="/oauth2/authorization/google"
-          element={<SocialLoginCallback />}
-        />
-        <Route path="/auth/kakao" element={<SocialLoginCallback />} />
+        <Route path="/oauth2/code/google" element={<SocialLoginCallback />} />
+        <Route path="/oauth2/code/kakao" element={<SocialLoginCallback />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/order" element={<Order />} />
         <Route path="/addproduct" element={<AddProduct />} />

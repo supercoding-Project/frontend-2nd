@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Footer.module.css";
+import Modal from "../common/Modal";
 
 const Footer = () => {
+  const [openModal, setOpenModal] = useState(false);
+
+  const handleModalOpen = () => {
+    setOpenModal(true);
+  };
+
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
@@ -18,7 +25,12 @@ const Footer = () => {
           <span className={styles.h2}>
             8282-8282
             <span className={styles.btnContainer}>
-              <button className={styles.btnContent}>상담시간 안내</button>
+              <button className={styles.btnContent} onClick={handleModalOpen}>
+                상담시간 안내
+              </button>
+              {openModal ? (
+                <Modal openModal={openModal} setOpenModal={setOpenModal} />
+              ) : null}
             </span>
           </span>
         </div>
