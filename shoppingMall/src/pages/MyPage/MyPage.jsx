@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import style from "./MyPage.module.css";
 import UserInfo from "../../components/mypage/UserInfo";
@@ -57,11 +56,7 @@ const MyPage = () => {
         <aside className={style.btnAside}>
           <ul>
             {["userInfo", "cart", "salesList", "orderList"].map((tab) => (
-              <li
-                key={tab}
-                className={activeTab === tab ? style.active : ""}
-                onClick={() => setActiveTab(tab)}
-              >
+              <li key={tab} className={activeTab === tab ? style.active : ""} onClick={() => setActiveTab(tab)}>
                 {
                   {
                     userInfo: "기본정보",
