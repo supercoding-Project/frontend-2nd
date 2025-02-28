@@ -1,13 +1,19 @@
-import { React, useState, useRef } from "react";
+import { React, useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { RiGoogleFill, RiKakaoTalkFill } from "react-icons/ri";
 import ScrollTopButton from "../common/ScrollTopButton";
 import { AiFillEye } from "react-icons/ai";
 import { AiFillEyeInvisible } from "react-icons/ai";
-import EyeOpen from "../../assets/Icons/eye.svg";
 import styles from "./LoginPage.module.css";
+import { useDispatch } from "react-redux";
+import { authActions } from "../../store";
+import { useNavigate } from "react-router-dom";
+import { logIn } from "../../API/AuthService";
+import SocialLogin from "./SocialLogin";
 
 const LoginPage = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
   const [enteredEmail, setEnteredEmail] = useState("");
@@ -22,35 +28,50 @@ const LoginPage = () => {
     value: false,
   });
 
-  const handleFormSubmit = (e) => {
+  useEffect(() => {
+    const isAuthenticated = localStorage.getItem("isAuthenticated");
+    if (isAuthenticated === "true") {
+      dispatch(authActions.logIn());
+      navigate("/", { replace: true });
+    }
+  }, [dispatch, navigate]);
+
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
     setEnteredEmailIsTouched(true);
     setEnteredPasswordIsTouched(true);
-    console.log("enteredEmail", enteredEmail);
-    console.log("enteredPassword", enteredPassword);
 
     const emailIsValid = enteredEmail.includes("@");
     const pwIsValid = enteredPassword.trim().length > 0;
-
-    setEnteredEmailIsValid(emailIsValid);
-    setEnteredPasswordIsValid(pwIsValid);
 
     //enteredEmail email형식이 아니면 제출 안되게
 
     if (!emailIsValid || !pwIsValid) {
       console.log("submit fail!");
-
-      console.log(enteredEmailIsValid);
-      console.log(enteredPasswordIsValid);
       return;
     }
-    console.log("submit success");
-    setEnteredEmailIsValid(true);
-    setEnteredPasswordIsValid(true);
-    console.log(enteredEmailIsValid);
-    console.log(enteredPasswordIsValid);
-    setEnteredEmail("");
-    setEnteredPassword("");
+
+    try {
+      const response = await logIn(enteredEmail, enteredPassword);
+      console.log("login Success", response);
+      dispatch(authActions.logIn());
+      setEnteredEmail("");
+      setEnteredPassword("");
+      localStorage.setItem("email", response.email);
+      localStorage.setItem("userName", response.username);
+      localStorage.setItem("isAuthenticated", "true");
+      navigate("/", { replace: false });
+    } catch (error) {
+      console.error("login fail", error.message);
+      alert(error.message || "Please check your account");
+    }
+    // console.log("submit success");
+    // setEnteredEmailIsValid(true);
+    // setEnteredPasswordIsValid(true);
+    // localStorage.setItem("isAuthenticated", true);
+    // localStorage.setItem("email", enteredEmail); // 이메일 저장
+    // setEnteredEmail("");
+    // setEnteredPassword("");
   };
 
   const handleEmailInput = (e) => {
@@ -126,14 +147,15 @@ const LoginPage = () => {
             </button>
           </div>
         </form>
-        <div className={styles.socialLogin}>
-          <button className={styles.google}>
+        {/* <div className={styles.socialLogin}>
+          <button className={styles.google} onClick={handleGoogleLogin}>
             <RiGoogleFill size={24} /> 구글 로그인
           </button>
-          <button className={styles.kakao}>
+          <button className={styles.kakao} onClick={handleKakaoLogin}>
             <RiKakaoTalkFill size={24} /> 카카오 로그인
           </button>
-        </div>
+        </div> */}
+        <SocialLogin />
         <div className={styles.links}>
           <Link to="/signup">회원가입</Link>
           <Link to="/find-password">아이디 찾기</Link>

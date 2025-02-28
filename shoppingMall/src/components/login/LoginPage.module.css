@@ -9,7 +9,7 @@
 
 /* 로그인 박스 */
 .loginBox {
-  width: 350px;
+  width: 400px;
   padding: 30px;
   background: white;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -66,7 +66,7 @@ h2 {
 }
 
 .passwordWrapper .input {
-  width: 87%;
+  width: 95%;
   padding-right: 40px;
 }
 
@@ -77,7 +77,7 @@ h2 {
   margin: auto;
   position: absolute;
   fill: gray;
-  right: 10px;
+  right: 15px;
   top: 35px;
   transform: translateY(-55%);
 }
@@ -99,44 +99,6 @@ h2 {
   text-decoration: underline;
 }
 
-/* 소셜 로그인 */
-.socialLogin {
-  margin-top: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.google,
-.kakao {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px;
-  font-size: 16px;
-  border-radius: 5px;
-  cursor: pointer;
-  border: none;
-}
-
-.google {
-  color: black;
-  gap: 16px;
-}
-
-.kakao {
-  background-color: #fee500;
-  color: #3c1e1e;
-  gap: 10px;
-}
-
-.google:hover {
-  background-color: lightgray;
-}
-
-.kakao:hover {
-  background-color: #fdd835;
-}
 .error {
   color: red;
   font-size: 12px;
