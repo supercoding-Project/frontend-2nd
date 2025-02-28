@@ -7,14 +7,9 @@ import Login from "./pages/login/Login";
 import MyPage from "./pages/MyPage/MyPage";
 import Order from "./pages/Order/Order";
 import AddProduct from "./pages/AddProduct/AddProduct";
-<<<<<<< HEAD
-import CartPage from "./pages/MyPage/CartPage";
-import OrderComplete from "./pages/Order/OrderComplete";
-=======
 import SocialLoginCallback from "./components/login/SocialLoginCallback";
 import SignUp from "./pages/sign-up/SignUp";
 import Detail from "./pages/detail/Detail";
->>>>>>> origin/dev
 
 function App() {
   return (
@@ -28,14 +23,9 @@ function App() {
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/order" element={<Order />} />
-<<<<<<< HEAD
-        <Route path="/addProduct" element={<AddProduct />} />
-        <Route path="/orderComplete" element={<OrderComplete />} />
-=======
         <Route path="/addproduct" element={<AddProduct />} />
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/detail/:bookId" element={<Detail />} />
->>>>>>> origin/dev
       </Routes>
     </Layout>
   );
