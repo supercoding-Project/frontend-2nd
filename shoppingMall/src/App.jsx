@@ -9,6 +9,7 @@ import Order from "./pages/Order/Order";
 import AddProduct from "./pages/AddProduct/AddProduct";
 import SocialLoginCallback from "./components/login/SocialLoginCallback";
 import SignUp from "./pages/sign-up/SignUp";
+import Detail from "./pages/detail/Detail";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/order" element={<Order />} />
         <Route path="/addproduct" element={<AddProduct />} />
         <Route path="/signUp" element={<SignUp />} />
+        <Route path="/detail/:bookId" element={<Detail />} />
       </Routes>
     </Layout>
   );
